@@ -112,4 +112,8 @@ DATABASES = {
 DEBUG = True
 
 
+# 8. 設定密碼加密
+# 開啟 settings.py 並修改以下設定：
+
+
 

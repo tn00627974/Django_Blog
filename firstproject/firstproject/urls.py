@@ -16,14 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myblog.views import sayhello 
-from django.http import HttpResponse
+from myblog.views import sayhello , sayhi  # 匯入 views.py 裡面的函式 sayhello()
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path('',sayhello)
+  path('admin/', admin.site.urls), # path(網址, 函式)
+  path('', sayhello, name='home'),
+  path('sayhi/<username>',sayhi, name='hi')
 ]
 
-# 定義一個 sayhello() 函式，並將其路徑設定為 / 路徑，當使用者瀏覽到網站的根目錄時，就會呼叫此函式並顯示 Hello World! 字串。
-def sayhello(request):
-    return HttpResponse("Hello django!")
