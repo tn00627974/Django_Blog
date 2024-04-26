@@ -3,15 +3,14 @@
 ## 1. 確認環境與安裝 Django
 
 ```bash
-python3 --version
+python --version
 brew install python
 ```
 ```
-python3 --version
-pip3 --version
-pip3 install --upgrade pip
-pip3 install django==3.1.7
-pip3 list
+python --version
+pip install --upgrade pip
+pip install django
+pip list
 ```
 ## 2. 建立 Django 專案與應用程式
 ```bash
