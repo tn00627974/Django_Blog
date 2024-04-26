@@ -2,10 +2,6 @@
 
 ## 1. 確認環境與安裝 Django
 
-```bash
-python --version
-brew install python
-```
 ```
 python --version
 pip install --upgrade pip
