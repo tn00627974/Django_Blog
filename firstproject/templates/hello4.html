@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>顯示圖片的模板</title>
+    <link href="{% static "css/style.css" %}" rel="stylesheet" />
+</head>
+<body>
+    <div id="home">
+        <img src="{% static "images/picture.jpg" %}" alt="歡迎光臨" width="100" height="100" />
+        <span class="info">歡迎光臨: {{username}}</span>
+        <h2>現在時刻: {{now}}</h2>
+    </div>
+</body>
+</html>

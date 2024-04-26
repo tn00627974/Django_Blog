@@ -111,7 +111,6 @@ LANGUAGE_CODE = 'zh-hant' # 改為繁體中文
 TIME_ZOME = 'Asia/Taipei' # 改為台北時區
 
 USE_I18N = True
-
 USE_TZ = True
 
 

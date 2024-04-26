@@ -1,0 +1,12 @@
+<body>
+    <h1>Django 網站</h1>
+    <form method='post' action="{% url 'djpost' %}">
+      {% csrf_token %}
+      <p>帳號: <input type='text' name='username' /></p>
+      <p>密碼: <input type='password' name='password' /></p>
+      <p><button type='submit'>確定</button></p>
+    </form>
+  </body>
+
+
+  

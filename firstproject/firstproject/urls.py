@@ -16,11 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myblog.views import sayhello , sayhi  # 匯入 views.py 裡面的函式 sayhello()
+from myblog.views import* # 匯入 views.py 裡面的函式 sayhello()
+
 
 urlpatterns = [
   path('admin/', admin.site.urls), # path(網址, 函式)
-  path('', sayhello, name='home'),
-  path('sayhi/<username>',sayhi, name='hi')
+   path('', djpost,name='djpost'),
+  path('sayhi/<username>',sayhi),
+  path('hello3/<username>', hello3), # 加入 path(網址, 函式)
+  path('hello4/<username>', hello4), # 加入 path(網址, 函式)
+  path('dice/', dice),
+  path('show/',show),
+  path('djget/<name>/<city>/', djget),  # 將 name 和 city 加入路由中
+
+  path('test/<username>', test), # 加入 path(網址, 函式)
+
 ]
 
