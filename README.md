@@ -17,7 +17,7 @@ cd firstproject
 python manage.py startapp myblog
 ```
 ## 3. 專案目錄結構
-markdown降價
+```
 firstproject/
 ├── manage.py
 └── firstproject/
@@ -34,6 +34,7 @@ firstproject/
     ├── models.py
     ├── tests.py
     └── views.py
+```
 ## 4. 建立 templates 與 static 目錄
 ```python
 mkdir templates
