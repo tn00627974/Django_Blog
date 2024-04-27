@@ -56,3 +56,42 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEBUG = True
 ```
+
+## 6.在settings.py加入TEMPLATES資料夾 
+```python
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [BASE_DIR / "templates"], # 加上 templates 目錄
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    },
+]
+```
+
+## 7.引入 bootstap 到Django
+
+- 下載 https://getbootstrap.com/docs/5.3/getting-started/download/
+![image](https://github.com/tn00627974/Django_Blog/assets/139155210/734bf08e-5791-4596-b99b-38e574828e15)
+
+
+- 點選 Docs > Download  > bootstrap-5.3.3-dist解壓縮後放至以下<pluguns資料夾路徑>
+- H:\我的雲端硬碟\Github專案\Django_Blog\firstproject\static\pluguns
+
+將bootstrap.css加入在HTML呈現CSS
+```html
+<head>
+  <meta charset='utf-8'>
+  <title>{{name}}</title>
+  <link rel="stylesheet" href="/static/pluguns/bootstrap-5.3.3-dist/css/bootstrap.css">
+</head>
+```
+
+
