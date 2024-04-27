@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render # 引入 render 函式, 這是 Django 內建的函式，用來渲染模板
 from django.http import HttpResponse
 from datetime import datetime # 引入 datetime 模組
 from django.http import JsonResponse
@@ -50,6 +50,10 @@ def djpost(request):
   else:
     return render(request, "djpost.html", locals())
 
+def index(request):
+  context = {}
+  context['name'] = 'Ulysses'
+  return render(request, 'index.html',context)
 
 def test(request,username):
     string = "Hello, " + username + "!"
