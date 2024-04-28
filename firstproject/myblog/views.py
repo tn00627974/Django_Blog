@@ -55,16 +55,39 @@ def index(request):
   context['name'] = 'Ulysses'
   return render(request, 'index.html',context)
 
+def index1(request):
+  context = {}
+  context['name'] = 'Ulysses'
+  return render(request, 'index1.html',context)
+
+def index2(request):
+  # 變量
+  context = {}
+  context['name'] = 'Ulysses'
+  
+  # 列表
+  views_list = ["django課程","python課程","C++課程"]
+  context["views_List"] = views_list
+  
+  # 字典
+  views_dic = {"name":"程式員小飛","age":28}
+  context["views_dic"] = views_dic
+  
+  # if/else
+  score = 89
+  context["score"] = score
+  
+  # empty list
+  empty_list = []
+  context["empty_list"] = empty_list
+  
+  return render(request, 'index2.html',context)
+  
+
 def test(request,username):
     string = "Hello, " + username + "!"
     mylist = ["apple","banana","orange"]
     return JsonResponse({"string":string,"mylist":mylist})
 
-# def nowtime(request,username,now):
-#     now = datetime.now()
-#     # return HttpResponse(f"現在時間是{now}，{username}!")
-#     # render(傳遞 GET、POST, 模板名稱, 傳遞所有區域變數)
-#     return render(request,'myblog/hello.html',locals())
 
-    # return render(request, 'myapp/hello3.html', locals())
 
