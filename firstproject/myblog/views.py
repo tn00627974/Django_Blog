@@ -67,11 +67,11 @@ def index2(request):
   
   # 列表
   views_list = ["django課程","python課程","C++課程"]
-  context["views_List"] = views_list
+  context["views_list"] = views_list
   
   # 字典
-  views_dic = {"name":"程式員小飛","age":28}
-  context["views_dic"] = views_dic
+  views_dict = {"name":"程式員小飛","age":28}
+  context["views_dict"] = views_dict
   
   # if/else
   score = 89
@@ -82,6 +82,12 @@ def index2(request):
   context["empty_list"] = empty_list
   
   return render(request, 'index2.html',context)
+ 
+
+def index3(request):
+     return render(request, 'index3.html')
+   
+   
   
 
 def test(request,username):

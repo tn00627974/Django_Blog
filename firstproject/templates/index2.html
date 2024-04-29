@@ -1,26 +1,53 @@
-{% load static %}
-{% extends 'base.html' %}
-<!DOCTYPE html>
 <html>
 <head>
   <meta charset='utf-8'>
-  <title>{{name}}</title>
-  <link rel="stylesheet" href="/static/pluguns/bootstrap-5.3.3-dist/css/bootstrap.css">
-  
+  <title>Django子模板</title>
 </head>
 <body>
-    <div class="container">
-        <h1>{{name}}</h1>
-        <h1>{{views_List}}<h1>
-        <h1>{{views_dic}}<h1>
-        <h1>{{score}}<h1>
-        <h1>{{empty_list}}<h1>
-        <span style="display: flex; align-items: center;">
-            <img src="{% static "images/picture.jpg" %}" alt="歡迎光臨" width="100" height="100" />
+    {% load my_tags %}
+    {# 變量 #}
+    <p>{{ name }}</p>
 
-        </span>
+    {# 列表 #}
+    <p>{{ views_list }}</p>
+    {% for i in  views_list %}
+        <p>{{ i }}<p>  
+    {% endfor %}
+
+    {# 字典 #}
+    <p>{{ views_list }}<p>
+    {% for key, value in views_dic.items %}
+        <p>{{ key }}: {{ value }}</p>
+    {% endfor %}
+
+    {# if/else #}
+    {% if score == 90 %}
+        <p>你的成績是{{ score }}，恭喜你過得不錯！</p>
+    {% else %}
+        <p>你的成績是{{ score }}，很遺憾，未及格。</p>
+    {% endif %}
+
+    {# empty_list #}
+    {% for i in empty_list %}
+        <p>i<p>
+    {% empty %}
+        <p>列表為空<p>
+    {% endfor %}
+        
+    {% if views_list %}
+        <ul>
+            {% for view in views_list %}
+                <li>{{ view }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>目前沒有任何課程。</p>
+    {% endif %} 
+
+    {# 自定義標籤 #}
+    <p> 標籤 : {% mul 11 22 33 %} <p>
+    {% my_input "請輸入您的姓名" "UbserName" %}
 
 
-    </div>
 </body>
 </html>

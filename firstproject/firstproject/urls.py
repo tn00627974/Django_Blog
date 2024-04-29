@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path , include
 from myblog.views import* # 匯入 views.py 裡面的所有函式
 
 # 設定路徑 對應到 views.py 中的函式
@@ -29,8 +29,9 @@ urlpatterns = [
   path('show/', show),
   path('djget/<name>/<city>/', djget),  
   path('index/', index), 
-  path('index1', index1),
-  path('index2', index2),
+  path('index1/', index1),
+  path('index2/', index2),
+  path('index3/', index3),
   path('test/<username>', test), 
 ]
 
