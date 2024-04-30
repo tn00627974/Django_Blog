@@ -1,9 +1,9 @@
 <html>
 <head>
-  <meta charset='utf-8'>
-  <title>Django子模板</title>
+  {% include "header.html" %}
 </head>
 <body>
+    
     {% load my_tags %}
     {# 變量 #}
     <p>{{ name }}</p>
@@ -45,8 +45,13 @@
     {% endif %} 
 
     {# 自定義標籤 #}
-    <p> 標籤 : {% mul 11 22 33 %} <p>
+    <p> 標籤 : {% mul 11 22  %} <p>
     {% my_input "請輸入您的姓名" "UbserName" %}
+
+    <p>{{score|my_filter:0.6}}<p> 
+
+    {{}}
+
 
 
 </body>
