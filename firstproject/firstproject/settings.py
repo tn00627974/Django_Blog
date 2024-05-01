@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "myblog",
+    "TestModel",
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,7 @@ DATABASES = {
         # "NAME": BASE_DIR / "db.sqlite3",
         # mysql
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "django_data",
+        "NAME": "Django_database",
         "USER": "root",
         "PASSWORD": "password",
         "HOST": "localhost",
