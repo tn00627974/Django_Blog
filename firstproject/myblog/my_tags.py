@@ -18,3 +18,7 @@ def my_input(v1,v2):
     </div> 
     ''' .format(v1,v2)
     return mark_safe(temp_html)
+
+@register.filter
+def my_filter(v1,v2):
+    return v1*v2

@@ -15,8 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path , include
+from django.urls import path , include ,re_path
 from myblog.views import* # 匯入 views.py 裡面的所有函式
+from firstproject import testdb
 
 # 設定路徑 對應到 views.py 中的函式
 urlpatterns = [
@@ -33,6 +34,7 @@ urlpatterns = [
   path('index2/', index2),
   path('index3/', index3),
   path('test/<username>', test), 
+  re_path(r'db/add$', testdb.add), #  Test function to add data to database
 ]
 
 
