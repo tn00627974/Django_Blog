@@ -95,4 +95,16 @@ TEMPLATES = [
 </head>
 ```
 
-
+## 8. 啟動Django資料庫
+創建表格結構資料庫
+```
+python manage.py migrate
+```
+從firstproject\TestModel\models.py的class創建資料型態 , (此時還沒有建立表格)
+```
+python manage.py makemigrations  
+```
+創建資料型態後 , 以下以下指令就可以使用 Django 創建Mysql Table
+```
+python manage.py migrate TestModel
+```
