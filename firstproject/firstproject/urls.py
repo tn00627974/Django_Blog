@@ -23,17 +23,7 @@ from firstproject import testdb
 urlpatterns = [
   path('admin/', admin.site.urls), # path(網址, 函式)
    path('', djpost,name='djpost'), # 首頁 顯示所有文章
-  path('sayhi/<username>',sayhi),
-  path('hello3/<username>', hello3), 
-  path('hello4/<username>', hello4), 
-  path('dice/', dice),
-  path('show/', show),
-  path('djget/<name>/<city>/', djget),  
-  path('index/', index), 
-  path('index1/', index1),
-  path('index2/', index2),
-  path('index3/', index3),
-  path('test/<username>', test), 
+   path('index', index), # 首頁 顯示所有文章
   re_path(r'db/add$', testdb.add), #  Test function to add data to database
 ]
 
