@@ -21,9 +21,11 @@ from firstproject import testdb
 
 # 設定路徑 對應到 views.py 中的函式
 urlpatterns = [
-  path('admin/', admin.site.urls), # path(網址, 函式)
-   path('', djpost,name='djpost'), # 首頁 顯示所有文章
-   path('index', index), # 首頁 顯示所有文章
+    path('admin/', admin.site.urls), # path(網址, 函式)
+    path('', index), # 首頁 顯示所有文章
+    path('blog/',blog,name='blog'), # 文章 顯示所有文章 
+    path('Portfolio/',portfolio,name='portfolio'), # 文章 顯示所有文章 
+    path('about/',about,name='about'), # 文章 顯示所有文章 
   re_path(r'db/add$', testdb.add), #  Test function to add data to database
 ]
 
