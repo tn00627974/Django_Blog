@@ -26,7 +26,7 @@ urlpatterns = [
     path('blog/',blog,name='blog'), # 文章 顯示所有文章 
     path('Portfolio/',portfolio,name='portfolio'), # 文章 顯示所有文章 
     path('about/',about,name='about'), # 文章 顯示所有文章 
-  re_path(r'db/add$', testdb.add), #  Test function to add data to database
+#   re_path(r'db/add$', testdb.add), #  新增資料庫資料 
 ]
 
 
