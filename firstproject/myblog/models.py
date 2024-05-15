@@ -4,7 +4,7 @@ from django.utils import timezone
 
 # Create your models here.
 # 使用者登入資訊
-class User(models.Model):
+class Login_User(models.Model):
     username = models.CharField(max_length=20, unique=True)
     password = models.CharField(max_length=50)
     email = models.EmailField(unique=True)

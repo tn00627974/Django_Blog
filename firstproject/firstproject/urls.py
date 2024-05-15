@@ -17,15 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path , include ,re_path
 from myblog.views import* # 匯入 views.py 裡面的所有函式
-from firstproject import testdb
 
 # 設定路徑 對應到 views.py 中的函式
 urlpatterns = [
     path('admin/', admin.site.urls), # path(網址, 函式)
-    path('', index), # 首頁 顯示所有文章
+    path('', index,name='index'), # 首頁 顯示所有文章
     path('blog/',blog,name='blog'), # 文章 顯示所有文章 
     path('Portfolio/',portfolio,name='portfolio'), # 文章 顯示所有文章 
     path('about/',about,name='about'), # 文章 顯示所有文章 
+    
+    # Blog 文章
+    path('post_detail/<int:post_id>/',post_detail,name='post_detail'),
+    path('new_post/',post_detail,name='new_post'),
 #   re_path(r'db/add$', testdb.add), #  新增資料庫資料 
 ]
 
