@@ -7,7 +7,7 @@ from django.http import JsonResponse
 import random
 from.models import User,Post,Tag
 from .forms import PostForm
-from pytube import YouTube
+import markdown
 
 # Create your views here.
 
@@ -21,18 +21,29 @@ def portfolio(request):
 def about(request):
     return render(request, 'about.html')
 
-def youtube_music(request):
-    # yt = YouTube(youtube_url)
-    # audio = yt.streams.filter(only_audio=True).first()
+# from pytube import YouTube
+# def youtube_music(request):
+#     # yt = YouTube(youtube_url)
+#     # audio = yt.streams.filter(only_audio=True).first()
     
-    # # 設定檔案名稱
-    # response = HttpResponse(content_type="audio/mpeg")
+#     # # 設定檔案名稱
+#     # response = HttpResponse(content_type="audio/mpeg")
     
-    # # 將音訊資料寫入 response
-    # # response.write(audio.stream.stream())
-    # response.write(audio.stream.read())
-    return render (request, 'youtube_music.html')
+#     # # 將音訊資料寫入 response
+#     # # response.write(audio.stream.stream())
+#     # response.write(audio.stream.read())
+#     return render (request, 'youtube_music.html')
 
+# def markdown_content_view(request):
+#     md = markdown.Markdown(extensions=["fenced_code"])
+#     markdown_content = MarkdownContent.objects.first()
+#     markdown_content.content = md.convert(markdown_content.content)
+#     context = {"markdown_content": markdown_content}
+#     return render(
+#         request,
+#         "post_detail.html",
+#         context=context
+#     )
 
 
 # Blog Funtion
@@ -40,9 +51,18 @@ def index(request):
     posts = Post.objects.all()
     return render(request, 'index.html', {'posts': posts})
 
+# post版本1
+# def post_detail(request, post_id):
+#     post = Post.objects.get(id=post_id)
+#     return render(request, 'post_detail.html', {'post': post})
+
+# post版本2
 def post_detail(request, post_id):
     post = Post.objects.get(id=post_id)
+    md = markdown.Markdown(extensions=["fenced_code"])
+    post.content = md.convert(post.content)
     return render(request, 'post_detail.html', {'post': post})
+
 
 def new_post(request):
     if request.method == "POST":
