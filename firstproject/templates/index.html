@@ -1,17 +1,107 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Blog</title>
-</head>
-<body>
-    <h1>Blog Posts</h1>
-    <ul>
-        {% for post in posts %}
-        <li>
-            <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'new_post' %}">New Post</a>
+{% include 'base.html' %}
+{% load static %}
+    <!-- Page Header-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css\styles.css' %}"> 
+    <header class="masthead" style="background-image: url('{% static 'assets/img/post-bg.jpg' %}'); background-size: cover; background-position: center;">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <body>
+                            <iframe width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/WjJZufaOv3o?&autoplay=1&loop=1"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                        </body>
+                        <br>
+                        <br>
+                        <h5>分享 Python程式設計、資料工具、Web開發、資料庫、雲端GCP</h5>
+                        <span class="subheading"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content-->
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <!-- Post preview-->
+                {% for post in posts %}
+                <div class="post-preview">
+                    <a href="{% url 'post_detail' post.id %}"> 
+                        {% comment %} <h3 class="single-ellipsis">這是一個很長的標題超過一行就會隱藏，還包含 English text 可以再更多更多字，請再試試看，超過一行就會隱藏接下來的文字</h3> {% endcomment %}
+                        <h2 class="post-title">{{ post.title }}</h2>
+                        {% comment %} <h3 class="post-subtitle">{{ post.content }}</h3> {% endcomment %}
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#!">{{ post.author.username }} </a>
+                        on {{ post.published_date}}
+                    </p>
+                </div>
+                {% endfor %}
+                <!-- Divider-->
+                <hr class="my-4" />
+                <!-- Post preview-->
+
+                {% comment %} <div class="post-preview">
+                    <a href="post.html"><h2 class="post-title">535143human has a finite number of heartbeats. I don't intend to waste any of mineI believe every human has a finite number of heartbeats. I don't intend to waste any of mine.I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.I believe every human has a finite number of heartbeats. I don't intend to waste any of mine..</h2></a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#!">Start Bootstrap</a>
+                        on September 18, 2023
+                    </p>
+                </div> {% endcomment %}
+                <!-- Divider-->
+                <hr class="my-4" />
+
+                <!-- Pager-->
+                <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer-->
+    <footer class="border-top">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                            <a href="#!">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-twitter fa-stasvg-inline--fa fa-github fa-stack-1x fa-inverseck-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="small text-center text-muted fst-italic">Copyright &copy; RedMoon Blog 2024</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
 </body>
 </html>

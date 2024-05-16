@@ -1,27 +1,41 @@
 {% include 'base.html' %}
 {% load static %}
-        <header class="masthead" style="background-image: url('{% static 'assets/img/post-bg.jpg' %}');">
-            <div class="container position-relative px-4 px-lg-5" > 
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <div class="post-heading">
-                            <h1>Man must explore, and this is exploration at its greatest</h1>
-                            <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
-                            <span class="meta">
-                                Posted by
-                                <a href="#!">Start Bootstrap</a>
-                                on August 24, 2023
-                            </span>
-                        </div>
-                    </div>
+
+<body>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+    <p>Tags: 
+        {% for tag in post.tags.all %}
+            {{ tag.name }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    <a href="{% url 'index' %}">Back to Home</a>
+</body>
+<header class="masthead" style="background-image: url('{% static 'assets/img/post-bg.jpg' %}');">
+    <div class="container position-relative px-4 px-lg-5" > 
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                        {% comment %} <h3 class="single-ellipsis">這是一個很長的標題超過一行就會隱藏，還包含 English text 可以再更多更多字，請再試試看，超過一行就會隱藏接下來的文字</h3> {% endcomment %}
+                        {% comment %} <h3 class="post-subtitle">{{ post.content }}</h3> {% endcomment %}
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <span class="meta">
+                        Posted by
+                        <a href="#!">Start Bootstrap</a>
+                        on August 24, 2023
+                    </span>
                 </div>
             </div>
-        </header>
+        </div>
+    </div>
+</header>
         <!-- Post Content-->
         <article class="mb-4">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
+                        <h2 class="post-title">{{ post.title }}</h2>
+
                         <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
                         <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
                         <p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.</p>

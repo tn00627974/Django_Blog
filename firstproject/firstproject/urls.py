@@ -29,6 +29,7 @@ urlpatterns = [
     # Blog 文章
     path('post_detail/<int:post_id>/',post_detail,name='post_detail'),
     path('new_post/',post_detail,name='new_post'),
+     path('mp3/',youtube_music,name='youtube_music'),
 #   re_path(r'db/add$', testdb.add), #  新增資料庫資料 
 ]
 

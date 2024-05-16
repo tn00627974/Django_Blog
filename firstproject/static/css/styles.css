@@ -10791,15 +10791,26 @@ header.masthead .post-heading .meta a {
 .post-preview > .post-meta > a {
   text-decoration: none;
 }
-.post-title:hover,
-.post-subtitle:hover {
+
+
+/* .post-title:hover {
     color: red; /* 或者你想要的任何亮色 */
     /* 或者其他任何樣式 */
-}
+/* } */ 
+
+
 
 
 @media (min-width: 992px) {
   .post-preview > a > .post-title {
     font-size: 2.25rem;
   }
+}
+
+.post-subtitle {
+  display: -webkit-box;
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
 }
