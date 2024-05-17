@@ -10,7 +10,7 @@
                         <body>
                             <iframe width="560"
                             height="315"
-                            src="https://www.youtube.com/embed/WjJZufaOv3o?&autoplay=1&loop=1"
+                            src="https://www.youtube.com/embed/zsYIw6RXjfM?si=J77vogm6WfBqzvtM&autoplay=1&loop=1"
                             title="YouTube video player"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -31,7 +31,7 @@
                 <!-- Post preview-->
                 {% for post in posts %}
                 <div class="post-preview">
-                    <a href="{% url 'post_detail' post.id %}"> 
+                    <a href="{% url 'blog_post_detail' post.id %}"> 
                         {% comment %} <h3 class="single-ellipsis">這是一個很長的標題超過一行就會隱藏，還包含 English text 可以再更多更多字，請再試試看，超過一行就會隱藏接下來的文字</h3> {% endcomment %}
                         <h2 class="post-title">{{ post.title }}</h2>
                         {% comment %} <h3 class="post-subtitle">{{ post.content }}</h3> {% endcomment %}

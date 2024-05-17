@@ -9,15 +9,20 @@ from.models import User,Post,Tag
 from .forms import PostForm
 import markdown
 
-# Create your views here.
+# 首頁 : 顯示所有文章
+def index(request):
+    posts = Post.objects.all()
+    return render(request, 'index.html', {'posts': posts})
 
-# 定義一個 sayhello() 函式，並將其路徑設定為 / 路徑，當使用者瀏覽到網站的根目錄時，就會呼叫此函式並顯示 Hello World! 字串。
-def blog(request):
-    return render(request, 'blog.html')
+# blog 同 index 頁面
+# def blog(request):
+#     return render(request, 'blog.html')
   
+# 作品集
 def portfolio(request):
     return render(request, 'portfolio.html')
 
+# 關於我
 def about(request):
     return render(request, 'about.html')
 
@@ -46,22 +51,12 @@ def about(request):
 #     )
 
 
-# Blog Funtion
-def index(request):
-    posts = Post.objects.all()
-    return render(request, 'index.html', {'posts': posts})
-
-# post版本1
-# def post_detail(request, post_id):
-#     post = Post.objects.get(id=post_id)
-#     return render(request, 'post_detail.html', {'post': post})
-
-# post版本2
-def post_detail(request, post_id):
+# blog_post_detail 頁面 (顯示單篇文章) 
+def blog_post_detail(request, post_id):
     post = Post.objects.get(id=post_id)
-    md = markdown.Markdown(extensions=["fenced_code"])
+    md = markdown.Markdown(extensions=["fenced_code","codehilite"])
     post.content = md.convert(post.content)
-    return render(request, 'post_detail.html', {'post': post})
+    return render(request, 'blog_post_detail.html', {'post': post})
 
 
 def new_post(request):
