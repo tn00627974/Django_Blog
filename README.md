@@ -1,3 +1,7 @@
+![image](https://github.com/tn00627974/Django_Blog/assets/139155210/e23046f2-09e0-4dce-b184-ad3d8989f397)
+
+
+
 # 建立 Django 專案與設定指引
 
 ## 1. 確認環境與安裝 Django
