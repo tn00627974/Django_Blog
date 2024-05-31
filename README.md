@@ -1,17 +1,17 @@
 ![image](https://github.com/tn00627974/Django_Blog/assets/139155210/e23046f2-09e0-4dce-b184-ad3d8989f397)
 
 
-# Django Blog功能開發
+# Django Blog 功能開發
 
 - [x] Django連結template 用HTML ,CSS 美化一下介面 
-- [x] 建立資料庫表格
-- [x] 部落格新增文章 or 刪除文章 (admin )
-- [x] 發文日期
+- [x] 建立Mysql資料庫表格(本地端)
+- [x] 部落格新增文章 or 刪除文章 (admin後台)
+- [x] 發文日期,會員名稱
 - [x] HTML新增文章後,要怎麼自動多一頁HTML
 - [x] HTML文章上傳圖片url
-- [x] HTML新增程式碼框
+- [x] HTML新增程式碼框 (Pygments的CodeHilite擴展)
 - [x] 文章內容支援為Markdown語法
-- [x] Markdown 程式碼區域複製功能
+- [x] Markdown程式碼區域複製功能
 - [ ] 部落格文章五頁以上要換頁 [1,2,3,4,5...好幾頁]
 - [ ] 部落格文章 分類標籤
 
