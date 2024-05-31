@@ -3,7 +3,7 @@
 
 # Django Blog 功能開發
 
-- [x] Django連結template 用HTML ,CSS 美化一下介面 
+- [x] Django連結template 用HTML ,CSS ,Bootstrap 美化介面 
 - [x] 建立Mysql資料庫表格(本地端)
 - [x] 部落格新增文章 or 刪除文章 (admin後台)
 - [x] 發文日期,會員名稱
