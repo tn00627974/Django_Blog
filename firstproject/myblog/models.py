@@ -14,16 +14,19 @@ class Login_User(models.Model):
     is_bot = models.BooleanField(default=False)
     
 # 部落格文章    
-# 文章標題、內容、作者、建立日期、發佈日期、標籤
+
+# 文章標籤
 class Tag(models.Model):
     name = models.CharField(max_length=50)
-    # 文章標籤
+    
     def __str__(self): # __str__ 是 Python的魔法方法，它會回傳一個字串，用於在 Django 的 ORM 框架中顯示物件的字串表示
         return self.name 
 
+# 定義名為Post的資料庫模型，用於儲存文章相關資訊
 class Post(models.Model):
-    # 定義名為Post的資料庫模型，用於儲存文章相關資訊
-
+    """
+    文章標題、內容、作者、建立日期、發佈日期、標籤(多對多關係)
+    """
     title = models.CharField(max_length=200)  # 文章標題，最大長度為200個字元
     content = models.TextField()  # 文章內容，使用TextField類型
     author = models.ForeignKey(User, on_delete=models.CASCADE)  # 作者，使用外鍵關聯到User模型，當User刪除時刪除相應的文章

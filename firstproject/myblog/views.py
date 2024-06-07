@@ -3,16 +3,25 @@
 from django.shortcuts import render, redirect # 引入 render 函式, 這是 Django 內建的函式，用來渲染模板
 from django.http import HttpResponse
 from datetime import datetime # 引入 datetime 模組
+from django.core.paginator import Paginator # 顯示文章列表的函式
 from django.http import JsonResponse
 import random
 from.models import User,Post,Tag
 from .forms import PostForm
 import markdown
+from django.core.paginator import Paginator
 
 # 首頁 : 顯示所有文章
 def index(request):
     posts = Post.objects.all()
-    return render(request, 'index.html', {'posts': posts})
+    tags = Tag.objects.all()
+    paginator = Paginator(posts, 3)  # 每頁顯示 5 篇文章
+    print(paginator.num_pages)
+    page_number = request.GET.get('page')
+    print(page_number)
+    page_obj = paginator.get_page(page_number)
+    print(page_obj)
+    return render(request, 'index.html', {'posts': posts,'tags':tags,'paginator':paginator,'page_obj':page_obj})
 
 # blog 同 index 頁面
 # def blog(request):

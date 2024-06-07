@@ -26,7 +26,11 @@
                     Posted by
                     <a href="#!">{{ post.author.username }} </a>
                     on {{ post.published_date}}
-                </p>
+                    <br>
+                    Tags : 
+                    {% for tag in post.tags.all%}
+                    <span>{{ tag.name }}</span>
+                    {% endfor %}
                 </p>
             </div>
         </div>
