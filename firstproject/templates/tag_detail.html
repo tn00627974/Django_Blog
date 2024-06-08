@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tag Detail</title>
+</head>
+<body>
+    <h1>{{ tag.name }}</h1>
+    <p>Created: {{ tag.created_date }}</p>
+    <p>Number of Posts: {{ tag.posts.count }}</p>
+
+    <h2>Related Posts:</h2>
+    <ul>
+        {% for post in tag.posts.all %}
+            <li><a href="{% url 'blog_post_detail' post.id %}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <!-- Add more content or functionality as needed -->
+</body>
+</html>

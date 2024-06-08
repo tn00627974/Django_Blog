@@ -1,26 +1,47 @@
 {% include 'base.html' %}
 {% load static %}
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('{% static 'assets/img/post-bg.jpg' %}'); background-size: cover; background-position: center;">
+        <header class="masthead" style="background-image: url('{% static 'assets/img/about-bg.jpg' %}'); background-size: cover; background-position: center;">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
                             <h1>About Me</h1>
-                            <span class="subheading">This is what I do.</span>
+                            <span class="subheading">I enjoy learning, I enjoy growing, and every day I progress 1% more than the person I was yesterday.</span>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
         <!-- Main Content-->
+        
         <main class="mb-4">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
+                        <div class="article-inner">
+                            {% comment %} <header class="article-header" style="display: flex; justify-content: center; flex-direction: column; align-items: center;"> {% endcomment %}
+                          <h1 class="article-title" itemprop="name" style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+                            關於我 
+                          </h1>
+                          <hr />
+                          <div class="article-entry" itemprop="articleBody" style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+                            <img src="{% static 'assets/img/about-me.jpg' %}" style="width:128px;margin-top:12px; background-size: cover; background-position: center;">
+                      <p>學習資訊科學的歷程歷經波折，參與過學院式教育、基於興趣的買書自學，也曾以 OCW 的方式進行學習，最後是無數個夜晚在溪畔壩旁的辦公室，感受到一次次解決問題的喜悅，確認志業在此 💘</p>
+                      <p>寫部落格的目的很簡單，在參與資訊科技的進展過程，達成每年規劃的學習目標，並利用筆記強化學習的成果，同時也易於工作中的檢索 👨‍💻</p>
+                      <p>目前的工作主要是為了解決各種 IT 疑難雜症，包含伺服器、資料庫的管理以及應用系統的維護 🛠️</p>
+                      <p>純粹的開發反而更多時間是基於自己的興趣，而 Web 是學習一路以來最有興趣的領域，也因此開發筆記學習主要是 Web 相關的技術，並輔各式 IT 疑難雜症的處理心得，總之內容就是圍繞在紀錄過程中的學習與解決問題的快樂 (arbejdsglæde) 😉</p>
+                      <p>部落格中的文章是基於工作與興趣所做的研究、整理與測試，如果有不當引用或者內容錯誤的話，歡迎各位不吝指正 🙏 </p>
+                      <blockquote>
+                      <p>聯絡方式 Contacts: <a href="mailto:tn00627974@gmail.com">tn00627974@gmail.com</a></p>
+                      </blockquote>
+                      <hr>
+
+                          </div>
+                          <footer class="article-footer">
+                            {% comment %} <a data-url="https://sdwh.dev/about/index.html" data-id="clx0diriy0000sgtsawcnazvj" class="article-share-link">Share</a> {% endcomment %}
+                          </footer>
+                        </div>
                     </div>
                 </div>
             </div>

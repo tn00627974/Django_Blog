@@ -1,27 +1,35 @@
-# redirect 函式用來導向到其他頁面，例如說當使用者登入成功後，就會導向到首頁。
+from django.core.paginator import Paginator # 顯示文章列表的函式
+from django.db.models import Count # 顯示文章總數的函式
 
+# redirect 函式用來導向到其他頁面，例如說當使用者登入成功後，就會導向到首頁。
 from django.shortcuts import render, redirect # 引入 render 函式, 這是 Django 內建的函式，用來渲染模板
 from django.http import HttpResponse
-from datetime import datetime # 引入 datetime 模組
-from django.core.paginator import Paginator # 顯示文章列表的函式
 from django.http import JsonResponse
 import random
+from datetime import datetime # 引入 datetime 模組
 from.models import User,Post,Tag
 from .forms import PostForm
 import markdown
-from django.core.paginator import Paginator
 
 # 首頁 : 顯示所有文章
 def index(request):
     posts = Post.objects.all()
     tags = Tag.objects.all()
-    paginator = Paginator(posts, 3)  # 每頁顯示 5 篇文章
-    print(paginator.num_pages)
-    page_number = request.GET.get('page')
-    print(page_number)
-    page_obj = paginator.get_page(page_number)
-    print(page_obj)
-    return render(request, 'index.html', {'posts': posts,'tags':tags,'paginator':paginator,'page_obj':page_obj})
+    paginator = Paginator(posts, 5)  # 每頁顯示 5 篇文章
+    page_number = request.GET.get('page') # 取得頁數
+    page_obj = paginator.get_page(page_number) # 取得頁面物件
+    page_count = paginator.count # 總共有多少文章
+    
+    tags_with_counts = Tag.objects.annotate(num_posts=Count('post')) # 計算每個 tag 有幾篇文章
+    return render(request, 'index.html', {'posts': posts,'tags':tags,'paginator':paginator,'page_obj':page_obj,'page_count':page_count,'tags_with_counts': tags_with_counts})
+
+# 標籤列表
+def tag_detail(request, tag_id):
+    # 檢索標籤的詳細資訊，以及與該標籤相關聯的所有文章等
+    tag = Tag.objects.get(id=tag_id)
+    # 獲取與標籤相關聯的所有文章
+    posts = tag.post_set.all()
+    return render(request, 'tag_detail.html', {'tag': tag, 'posts': posts})
 
 # blog 同 index 頁面
 # def blog(request):

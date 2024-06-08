@@ -26,6 +26,8 @@ urlpatterns = [
     path('Portfolio/',portfolio,name='portfolio'), # 作品集
     path('about/',about,name='about'), # 關於我 
     
+    path('tag/<int:tag_id>/', tag_detail, name='tag_detail'),
+    
     # Blog 文章
     # path('blog/',blog,name='blog'), # 文章 顯示所有文章 
 ]

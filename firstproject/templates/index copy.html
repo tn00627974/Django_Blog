@@ -4,11 +4,11 @@
     {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"> 
     <link rel="stylesheet" type="text/css" href="{% static 'CodeHilite/styles.css' %}">  {% endcomment %}
 
-<header class="masthead" style="background-image: url('{% static 'assets/img/engineer.jpg' %}'); background-size: cover; background-position: center;">
+<header class="masthead" style="background-image: url('{% static 'assets/img/post-bg.jpg' %}'); background-size: cover; background-position: center;">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="site-heading">
+                <div class="site-heading">            
                     {% comment %} <body>
                         <iframe width="560"
                         height="315"
@@ -33,72 +33,67 @@
 
 <body>
     <!-- Main Content-->
+
     <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5">
-            <!-- 文章列表 -->
-            <div class="col-md-10 col-lg-10 col-xl-10">
-                <div class="row justify-content-center">
-                    <div class="col-md-12 col-lg-12 col-xl-12">
-                        <!-- Post preview-->
-                        {% for post in page_obj %}
-                        <div class="post-preview">
-                            <a href="{% url 'blog_post_detail' post.id %}"> 
-                                <h2 class="post-title">{{ post.title }}</h2>
-                                <h3 class="post-subtitle">{{ post.content }}</h3>
-                            </a>
-                            <p class="post-meta">
-                                Posted by
-                                <a href="#!">{{ post.author.username }} </a>
-                                上傳時間 : {{ post.published_date}}
-                                <br>
-                                Tags : 
-                                {% for tag in post.tags.all %}
-                                <span>{{ tag.name }}</span>{% if not forloop.last %}, {% endif %}
-                                {% endfor %}
-                            </p>
-                        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <!-- Post preview-->
+                {% for post in page_obj %}
+                <div class="post-preview">
+                    <a href="{% url 'blog_post_detail' post.id %}"> 
+                        {% comment %} <h3 class="single-ellipsis">這是一個很長的標題超過一行就會隱藏，還包含 English text 可以再更多更多字，請再試試看，超過一行就會隱藏接下來的文字</h3> {% endcomment %}
+                        <h2 class="post-title">{{ post.title }}</h2>
+                        <h3 class="post-subtitle">{{ post.content }}</h3>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#!">{{ post.author.username }} </a>
+                        上傳時間 : {{ post.published_date}}
+                        <br>
+                        Tags : 
+                        {% for tag in post.tags.all%}
+                        <span>{{ tag.name }}</span>{% if not forloop.last %}, {% endif %}
                         {% endfor %}
-                        <!-- Post pager-->  
-                        {% if page_obj.has_other_pages %}
-                        <div class="pagination">
-                            {% if page_obj.has_previous %}
-                            <li><a href="?page={{ page_obj.previous_page_number }}">＜</a></li>
-                            {% endif %}
-                            {% for num in page_obj.paginator.page_range %}
-                                {% if num == page_obj.number %}
-                                <li class="active"><span>{{ num }}</span></li>
-                                {% else %}
-                                <li><a href="?page={{ num }}">{{ num }}</a></li>
-                                {% endif %}
-                            {% endfor %}
-                            {% if page_obj.has_next %}
-                            <li><a href="?page={{ page_obj.next_page_number }}">＞</a></li>
-                            {% endif %}
-                        </div>
+                    </p>
+                </div>
+                {% endfor %}
+
+                <!-- Post pager-->  <!--view.py的index函式裡面有設定每頁顯示的文章數，所以page_obj.has_other_pages判斷是否有其他頁面可供翻頁-->
+                {% if page_obj.has_other_pages %}
+                <div class="pagination">
+                    {% if page_obj.has_previous %}
+                    {% comment %} <li><a href="?page={{ page_obj.first_page_number }}">首頁</a></li> {% endcomment %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}">＜</a></li>
+                    {% endif %}
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if num == page_obj.number %}
+                            <li class="active"><span>{{ num }}</span></li>
+                        {% else %}
+                            <li><a href="?page={{ num }}">{{ num }}</a></li>
                         {% endif %}
-                    </div>
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}">＞</a></li>
+                    {% comment %} <li><a href="?page={{ page_obj.paginator.num_pages }}">末頁</a></li> {% endcomment %}
+                    {% endif %}
                 </div>
-            </div>
-            <!-- 標籤 -->
-            <div class="col-md-2 col-lg-2 col-xl-2">
-                <div class="widget">
-                {% comment %} <div class="sidebar"> {% endcomment %}
-                    <h2>文章標籤</h2>
-                    <ul>
-                        {% for tag in tags_with_counts %}
-                        <li>
-                            <a href="{% url 'tag_detail' tag.id %}">{{ tag.name }} ({{ tag.num_posts }})</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                {% endif %}
             </div>
         </div>
     </div>
-</body>
 
     <!-- Footer-->
     <footer class="border-top">
+        <div class="sidebar">
+            <h2>標籤</h2>
+            <ul>
+                {% for tag in tags_with_counts %}
+                    <li>
+                        <a href="{% url 'tag_detail' tag.id %}">{{ tag.name }} ({{ tag.num_posts }})</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
