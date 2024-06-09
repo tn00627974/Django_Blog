@@ -43,3 +43,4 @@ class Post(models.Model):
         # 定義當前資料模型的字串表示形式，返回文章標題
         return self.title
     
+

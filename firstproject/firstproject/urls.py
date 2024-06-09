@@ -22,12 +22,10 @@ from myblog.views import* # 匯入 views.py 裡面的所有函式
 urlpatterns = [
     path('admin/', admin.site.urls), # path(網址, 函式)
     path('', index,name='index'), # 首頁 顯示所有文章
-    path('blog_post_detail/<int:post_id>/',blog_post_detail,name='blog_post_detail'),
+    path('blog_post_detail/<int:post_id>/',blog_post_detail,name='blog_post_detail'), # 文章內容頁面
     path('Portfolio/',portfolio,name='portfolio'), # 作品集
     path('about/',about,name='about'), # 關於我 
-    
-    path('tag/<int:tag_id>/', tag_detail, name='tag_detail'),
-    
+    path('tag/<int:tag_id>/', tag_detail, name='tag_detail'), # 文章標籤
     # Blog 文章
     # path('blog/',blog,name='blog'), # 文章 顯示所有文章 
 ]

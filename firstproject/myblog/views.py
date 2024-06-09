@@ -2,7 +2,7 @@ from django.core.paginator import Paginator # 顯示文章列表的函式
 from django.db.models import Count # 顯示文章總數的函式
 
 # redirect 函式用來導向到其他頁面，例如說當使用者登入成功後，就會導向到首頁。
-from django.shortcuts import render, redirect # 引入 render 函式, 這是 Django 內建的函式，用來渲染模板
+from django.shortcuts import render, redirect , get_object_or_404 # 引入 render 函式, 這是 Django 內建的函式，用來渲染模板
 from django.http import HttpResponse
 from django.http import JsonResponse
 import random
@@ -15,21 +15,31 @@ import markdown
 def index(request):
     posts = Post.objects.all()
     tags = Tag.objects.all()
-    paginator = Paginator(posts, 5)  # 每頁顯示 5 篇文章
+    paginator = Paginator(posts, 3)  # 每頁顯示 5 篇文章
     page_number = request.GET.get('page') # 取得頁數
     page_obj = paginator.get_page(page_number) # 取得頁面物件
     page_count = paginator.count # 總共有多少文章
     
+    # 預計之後要首頁顯示總文章數量
     tags_with_counts = Tag.objects.annotate(num_posts=Count('post')) # 計算每個 tag 有幾篇文章
-    return render(request, 'index.html', {'posts': posts,'tags':tags,'paginator':paginator,'page_obj':page_obj,'page_count':page_count,'tags_with_counts': tags_with_counts})
-
-# 標籤列表
-def tag_detail(request, tag_id):
-    # 檢索標籤的詳細資訊，以及與該標籤相關聯的所有文章等
-    tag = Tag.objects.get(id=tag_id)
-    # 獲取與標籤相關聯的所有文章
-    posts = tag.post_set.all()
-    return render(request, 'tag_detail.html', {'tag': tag, 'posts': posts})
+    return render(request, 'index.html', 
+                  {'posts': posts,
+                   'tags':tags,
+                   'paginator':paginator,
+                   'page_obj':page_obj,'page_count':page_count,
+                   'tags_with_counts': tags_with_counts})
+    
+# 標籤頁面 : 顯示該標籤的所有文章列表
+def tag_detail(request,tag_id):
+    tag = get_object_or_404(Tag, id=tag_id) # 取得 單一標籤名稱 
+    posts = Post.objects.filter(tags=tag) # post 表中標籤名稱 與 tag_id 相同的文章
+    tags_with_counts = Tag.objects.annotate(num_posts=Count('post')) # 取得 標籤 : 文章數量
+    tags = Tag.objects.all()
+    return render(request, 'tag_detail.html', 
+                  { "tag" : tag ,
+                   'posts': posts,
+                #    'tags':tags,
+                   'tags_with_counts': tags_with_counts})
 
 # blog 同 index 頁面
 # def blog(request):
@@ -40,10 +50,16 @@ def portfolio(request):
     return render(request, 'portfolio.html')
 
 # 關於我
-def about(request):
-    return render(request, 'about.html')
+# def about(request):
+#     return render(request, 'about.html')
 
-# blog_post_detail 頁面 (顯示單篇文章) 
+def about(request):
+    with open('static/123.md', 'r',encoding='utf-8') as f:
+        content = f.read()
+        html_content = markdown.markdown(content)
+    return render(request, 'about.html', {'html_content': html_content})
+
+# blog_post_detail 頁面 (顯示單篇文章) , 文章內容會用Markdowne格式轉換
 def blog_post_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     md = markdown.Markdown(extensions=["fenced_code","codehilite"])

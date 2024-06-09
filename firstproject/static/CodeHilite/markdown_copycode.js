@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             // 刪除臨時的textarea元素
             document.body.removeChild(tempTextArea);
 
-            // 提示用戶已複製到剪貼板
+            // 提示用戶已複製到剪貼板 < Ctrl + F5 清除緩除殘留 , 代碼更新才會正常>
             alert('程式碼已複製到剪貼板！');
         });
 
