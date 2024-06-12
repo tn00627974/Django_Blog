@@ -56,7 +56,7 @@ ROOT_URLCONF = "firstproject.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"], # 加上 templates 目錄
+        "DIRS": [os.path.join(BASE_DIR / "templates")], # 加上 templates 目錄
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -133,7 +133,8 @@ USE_TZ = True
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [ # 加入 static 路徑
-    BASE_DIR / 'static',
+    os.path.join(BASE_DIR, 'static'),
+    # BASE_DIR /'static',
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 

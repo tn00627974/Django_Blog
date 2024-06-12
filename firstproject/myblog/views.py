@@ -53,11 +53,11 @@ def portfolio(request):
 # def about(request):
 #     return render(request, 'about.html')
 
-def about(request):
-    with open('static/123.md', 'r',encoding='utf-8') as f:
+def about_me(request):
+    with open('static/about_me.md', 'r',encoding='utf-8') as f:
         content = f.read()
         html_content = markdown.markdown(content)
-    return render(request, 'about.html', {'html_content': html_content})
+    return render(request, 'about_me.html', {'html_content': html_content})
 
 # blog_post_detail 頁面 (顯示單篇文章) , 文章內容會用Markdowne格式轉換
 def blog_post_detail(request, post_id):
