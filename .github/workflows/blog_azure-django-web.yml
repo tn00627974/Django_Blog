@@ -79,7 +79,7 @@ jobs:
           # creds: ${{ secrets.AZURE_CREDENTIALS }}  # 使用 GitHub Secrets 中的 Azure 憑據
 
 
-      設置 Azure Web App 上的環境變量
+      # 設置 Azure Web App 上的環境變量
       - name: Set environment variables on Azure Web App
         run: |
           az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'deploy' --settings DB_NAME=${{ secrets.DB_NAME }} DB_USER=${{ secrets.DB_USER }} DB_PASS=${{ secrets.DB_PASS }} DB_HOST=${{ secrets.DB_HOST }}
