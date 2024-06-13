@@ -39,7 +39,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env �
 # print(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
