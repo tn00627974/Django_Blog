@@ -82,7 +82,7 @@ jobs:
       # 設置 Azure Web App 上的環境變量
       - name: Set environment variables on Azure Web App
         run: |
-          az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'your-resource-group' --settings DB_NAME=${{ secrets.DB_NAME }} DB_USER=${{ secrets.DB_USER }} DB_PASS=${{ secrets.DB_PASSWORD }} DB_HOST=${{ secrets.DB_HOST }}
+          az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'your-resource-group' --settings DB_NAME=${{ secrets.DB_NAME }} DB_USER=${{ secrets.DB_USER }} DB_PASS=${{ secrets.DB_PASS }} DB_HOST=${{ secrets.DB_HOST }}
 
       # 部署到 Azure Web App
       - name: 'Deploy to Azure Web App'
