@@ -1,0 +1,52 @@
+# 定義 GitHub Actions 工作流程的名稱
+name: Azure_Django_Blog_Deploy
+
+# 觸發部署的事件：當推送到 main 分支時觸發
+on:
+  push:
+    branches:
+      - Blog
+
+# 定義工作：構建和部署
+jobs:
+  build-and-deploy:
+    # 工作運行在 Ubuntu 最新版上
+    runs-on: ubuntu-latest
+    steps:
+      # 步驟1：檢出存儲庫
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+      # 步驟2：設置 Python
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'
+
+      # 步驟3：安裝 Poetry
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python -
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      # 步驟4：安裝依賴
+    - name: Install dependencies
+      run: poetry install
+
+      # 步驟5：運行測試
+    - name: Run tests
+      run: poetry run python manage.py test
+
+      # 步驟6：部署到 Azure
+    - name: Deploy to Azure
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ secrets.DB_HOST }}
+        slot-name: production
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        database-hostname: ${{ secrets.DB_HOST }}
+        database-username: ${{ secrets.DB_USER }}
+        database-password: ${{ secrets.DB_PASS }}
+        ssl-mode: require
+
+

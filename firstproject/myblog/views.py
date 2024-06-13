@@ -15,7 +15,7 @@ import markdown
 def index(request):
     posts = Post.objects.all()
     tags = Tag.objects.all()
-    paginator = Paginator(posts, 3)  # 每頁顯示 5 篇文章
+    paginator = Paginator(posts, 5)  # 每頁顯示 5 篇文章
     page_number = request.GET.get('page') # 取得頁數
     page_obj = paginator.get_page(page_number) # 取得頁面物件
     page_count = paginator.count # 總共有多少文章

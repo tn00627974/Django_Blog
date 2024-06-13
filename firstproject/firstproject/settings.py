@@ -12,16 +12,34 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv # 導入 dotenv 套件
+
+import sys
+print(sys.path)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# 獲取專案的根目錄
 BASE_DIR = Path(__file__).resolve().parent.parent
+# 獲取 .env 檔案的路徑
+# load_dotenv(os.path.join(BASE_DIR, '.env'))
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-64%-%#pntiwa=u6w%pq6#fcdjnd-u(4c6t25gb0f_&#i6m+!@z"
+# SECRET_KEY = "django-insecure-64%-%#pntiwa=u6w%pq6#fcdjnd-u(4c6t25gb0f_&#i6m+!@z" (os.path.join(BASE_DIR, '.SECRET_KEY'))
+SECRET_KEY = (os.path.join(BASE_DIR, '.SECRET_KEY'))
+
+load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env 檔案
+# load_dotenv() 最外面的資料夾 
+
+# print(os.getenv('DB_NAME'))
+# print(os.getenv('DB_USER'))
+# print(os.getenv('DB_PASS'))
+# print(os.getenv('DB_HOST'))
+# print(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,20 +97,36 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
+# 本地端 測試資料庫設定
+# DATABASES = {
+#     "default": {
+#         # "ENGINE": "django.db.backends.sqlite3",
+#         # "NAME": BASE_DIR / "db.sqlite3",
+#         # mysql
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "Django_Blog",
+#         "USER": "root",
+#         "PASSWORD": "password",
+#         "HOST": "localhost",
+#         "PORT": "3306",
+#     }
+# }
+
+# Azure 遠端資料庫設定
 DATABASES = {
-    "default": {
-        # "ENGINE": "django.db.backends.sqlite3",
-        # "NAME": BASE_DIR / "db.sqlite3",
-        # mysql
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "Django_Blog",
-        "USER": "root",
-        "PASSWORD": "password",
-        "HOST": "localhost",
-        "PORT": "3306",
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME'), 
+        'USER': os.getenv('DB_USER'), 
+        'PASSWORD': os.getenv('DB_PASS'),
+        'HOST': os.getenv('DB_HOST'), # 資料庫主機名稱
+        'PORT': '3306',
+        'OPTIONS': {
+            'ssl': {'ca': os.path.join('.\static\ssl\DigiCertGlobalRootCA.crt.pem')}  # 設定 SSL 連線  
+        }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
