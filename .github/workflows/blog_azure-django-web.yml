@@ -76,13 +76,21 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E92FF502FD2F4E9580C1F664FA41F3D6 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CBD94531A7504A8BBDF61959546303C8 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_696086DF1A5D40A6BB8587671314F5FE }}
-          creds: ${{ secrets.AZURE_CREDENTIALS }}  # 使用 GitHub Secrets 中的 Azure 憑據
+          # creds: ${{ secrets.AZURE_CREDENTIALS }}  # 使用 GitHub Secrets 中的 Azure 憑據
 
 
       # 設置 Azure Web App 上的環境變量
       - name: Set environment variables on Azure Web App
+        # run: |
+          # az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'deploy' --settings DB_NAME=${{ secrets.DB_NAME }} DB_USER=${{ secrets.DB_USER }} DB_PASS=${{ secrets.DB_PASS }} DB_HOST=${{ secrets.DB_HOST }}
         run: |
-          az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'your-resource-group' --settings DB_NAME=${{ secrets.DB_NAME }} DB_USER=${{ secrets.DB_USER }} DB_PASS=${{ secrets.DB_PASS }} DB_HOST=${{ secrets.DB_HOST }}
+          az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'deploy' --settings \
+            DB_NAME=${{ secrets.DB_NAME }} \
+            DB_USER=${{ secrets.DB_USER }} \
+            DB_PASS=${{ secrets.DB_PASS }} \
+            DB_HOST=${{ secrets.DB_HOST }} \
+            WEBSITE_RUN_FROM_PACKAGE=1
+
 
       # 部署到 Azure Web App
       - name: 'Deploy to Azure Web App'
@@ -90,3 +98,4 @@ jobs:
         with:
           app-name: 'Azure-Django-Web'  # Azure Web App 的名稱
           slot-name: 'Production'  # 部署槽名稱
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }} # gtihub
