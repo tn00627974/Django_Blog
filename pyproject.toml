@@ -11,8 +11,8 @@ django = "^5.0.4"
 pymysql = "^1.1.0"
 markdown = "^3.6"
 django-select2 = "^8.1.2"
-poetry-dotenv = "^0.4.0"
 python-dotenv = "^1.0.1"
+poetry-plugin-dotenv = "^2.1.6"
 
 [build-system]
 requires = ["poetry-core"]

@@ -20,19 +20,15 @@ print(sys.path)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # 獲取專案的根目錄
 BASE_DIR = Path(__file__).resolve().parent.parent
+SECRET_KEY = (os.path.join(BASE_DIR, 'SECRET_KEY'))
 # 獲取 .env 檔案的路徑
-# load_dotenv(os.path.join(BASE_DIR, '.env'))
-
-
-
+load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env 檔案
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-64%-%#pntiwa=u6w%pq6#fcdjnd-u(4c6t25gb0f_&#i6m+!@z" (os.path.join(BASE_DIR, '.SECRET_KEY'))
-SECRET_KEY = (os.path.join(BASE_DIR, 'SECRET_KEY'))
 
-load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env 檔案
 # load_dotenv() 最外面的資料夾 
 
 # print(os.getenv('DB_NAME'))
@@ -42,7 +38,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env �
 # print(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -166,11 +162,11 @@ USE_TZ = True
 # 設定 static 靜態檔的路徑
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [ # 加入 static 路徑
-    os.path.join(BASE_DIR, 'static'),
+STATICFILES_DIRS = [ # 加入 static 路徑 
+    os.path.join(BASE_DIR, 'static'), # 
     # BASE_DIR /'static',
 ]
-STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR ,'staticfiles') # 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
