@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-64%-%#pntiwa=u6w%pq6#fcdjnd-u(4c6t25gb0f_&#i6m+!@z" (os.path.join(BASE_DIR, '.SECRET_KEY'))
-SECRET_KEY = (os.path.join(BASE_DIR, '.SECRET_KEY'))
+SECRET_KEY = (os.path.join(BASE_DIR, 'SECRET_KEY'))
 
 load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env 檔案
 # load_dotenv() 最外面的資料夾 
@@ -42,7 +42,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env �
 # print(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -170,7 +170,7 @@ STATICFILES_DIRS = [ # 加入 static 路徑
     os.path.join(BASE_DIR, 'static'),
     # BASE_DIR /'static',
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
