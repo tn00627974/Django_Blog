@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = (os.path.join(BASE_DIR, 'SECRET_KEY'))
 # 獲取 .env 檔案的路徑
 load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env 檔案
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
