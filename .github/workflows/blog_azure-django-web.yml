@@ -95,8 +95,6 @@ jobs:
       #     az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'deploy' --settings @.env
           
 
-
-
       # 設置 Azure Web App 上的環境變量
       - name: Set environment variables on Azure Web App
         run: |
