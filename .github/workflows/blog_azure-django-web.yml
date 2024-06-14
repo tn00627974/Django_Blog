@@ -22,24 +22,24 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python -
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+      # - name: Install Poetry
+      #   run: |
+      #     curl -sSL https://install.python-poetry.org | python -
+      #     echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-      - name: Install dependencies
-        run: 
+      # - name: Install dependencies
+      #   run: 
 
-          poetry install
+      #     poetry install
           
 
-      # - name: Create and start virtual environment
-      #   run: |
-      #     python -m venv venv
-      #     source venv/bin/activate
+      - name: Create and start virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
       
-      # - name: Install dependencies
-      #   run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -80,36 +80,22 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CBD94531A7504A8BBDF61959546303C8 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_696086DF1A5D40A6BB8587671314F5FE }}
           creds: ${{ secrets.AZURE_CREDENTIALS }}  
-
-      # - name: Create .env file
-      #   run: |
-      #     echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
-      #     echo "DB_USER=${{ secrets.DB_USER }}" >> .env
-      #     echo "DB_PASS=${{ secrets.DB_PASS }}" >> .env
-      #     echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env
-      #     echo "SECRET_KEY='${{ secrets.SECRET_KEY }}'" >> .env
-      #     echo "WEBSITE_RUN_FROM_PACKAGE=1" >> .env
-      
-      # - name: Set environment variables on Azure Web App
-      #   run: |
-      #     az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'deploy' --settings @.env
           
-
       # 設置 Azure Web App 上的環境變量
       - name: Set environment variables on Azure Web App
         run: |
           az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'deploy' --settings \
-            DB_NAME=${{ secrets.DB_NAME }} \
-            DB_USER=${{ secrets.DB_USER }} \
-            DB_PASS=${{ secrets.DB_PASS }} \
-            DB_HOST=${{ secrets.DB_HOST }} \
-            SECRET_KEY=${{ secrets.SECRET_KEY }} \
-            WEBSITE_RUN_FROM_PACKAGE=1
+          DB_NAME=${{ secrets.DB_NAME }} \
+          DB_USER=${{ secrets.DB_USER }} \
+          DB_PASS=${{ secrets.DB_PASS }} \
+          DB_HOST=${{ secrets.DB_HOST }} \
+          SECRET_KEY='${{ secrets.SECRET_KEY }}' \
+          WEBSITE_RUN_FROM_PACKAGE=1 \
 
       # collectstatic 收集靜態檔案
-      - name: Collect static files
-        run: python manage.py collectstatic --noinput
-        working-directory: firstproject
+      # - name: Collect static files
+      #   run: python manage.py collectstatic --noinput
+      #   working-directory: firstproject
     
 
       # 部署到 Azure Web App
