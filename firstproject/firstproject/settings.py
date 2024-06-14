@@ -39,9 +39,11 @@ load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env �
 # print(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['azure-django-web.azurewebsites.net']
+ALLOWED_HOSTS = ['127.0.0.1', 'azure-django-web.azurewebsites.net']
 
 
 # Application definition
