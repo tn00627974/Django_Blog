@@ -85,21 +85,12 @@ jobs:
       - name: Set environment variables on Azure Web App
         run: |
           az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'deploy' --settings \
-<<<<<<< HEAD
           DB_NAME=${{ secrets.DB_NAME }} \
           DB_USER=${{ secrets.DB_USER }} \
           DB_PASS=${{ secrets.DB_PASS }} \
           DB_HOST=${{ secrets.DB_HOST }} \
           SECRET_KEY='${{ secrets.SECRET_KEY }}' \
           WEBSITE_RUN_FROM_PACKAGE=1 \
-=======
-            DB_NAME=${{ secrets.DB_NAME }} \
-            DB_USER=${{ secrets.DB_USER }} \
-            DB_PASS=${{ secrets.DB_PASS }} \
-            DB_HOST=${{ secrets.DB_HOST }} \
-            SECRET_KEY='d${{ secrets.SECRET_KEY }}' \
-            WEBSITE_RUN_FROM_PACKAGE=1 \
->>>>>>> f6923759a07c18a707f7d585a20df0f6672ce1ab
 
       # collectstatic 收集靜態檔案
       # - name: Collect static files
