@@ -14,8 +14,11 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv # 導入 dotenv 套件
 
-import sys
-print(sys.path)
+# from django.core.management.utils import get_random_secret_key
+# print(get_random_secret_key())
+
+# import sys
+# print(sys.path)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # 獲取專案的根目錄
@@ -39,7 +42,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env �
 # print(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['azure-django-web.azurewebsites.net']
