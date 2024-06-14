@@ -107,9 +107,9 @@ jobs:
             WEBSITE_RUN_FROM_PACKAGE=1
 
       # collectstatic 收集靜態檔案
-      - name: Collect static files
-        run: python manage.py collectstatic --noinput
-        working-directory: firstproject
+      # - name: Collect static files
+      #   run: python manage.py collectstatic --noinput
+      #   working-directory: firstproject
     
 
       # 部署到 Azure Web App
