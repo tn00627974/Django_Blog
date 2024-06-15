@@ -83,7 +83,7 @@ jobs:
         run: |
           source myenv/bin/activate
           python firstproject/manage.py collectstatic --noinput
-        working-directory: firstproject
+        working-directory: ${{ github.workspace }}
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
