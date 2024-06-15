@@ -23,10 +23,10 @@ from dotenv import load_dotenv # 導入 dotenv 套件
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # 獲取專案的根目錄
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = os.getenv('SECRET_KEY') # 從 .env 檔案中獲取 SECRET_KEY 值
 
 # 獲取 .env 檔案的路徑
 load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env 檔案
+SECRET_KEY = os.getenv('SECRET_KEY') # 從 .env 檔案中獲取 SECRET_KEY 值
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -47,6 +47,7 @@ DEBUG = False
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['azure-django-web.azurewebsites.net']
+
 # ALLOWED_HOSTS = ['127.0.0.1', 'azure-django-web.azurewebsites.net']
 
 
@@ -127,7 +128,7 @@ DATABASES = {
         'HOST': os.getenv('DB_HOST'), # 資料庫主機名稱
         'PORT': '3306',
         'OPTIONS': {
-            'ssl': {'ca': os.path.join('.\static\ssl\DigiCertGlobalRootCA.crt.pem')}  # 設定 SSL 連線  
+            'ssl': {'ca': os.path.join(BASE_DIR, 'static', 'ssl', 'DigiCertGlobalRootCA.crt.pem')}  # 設定 SSL 連線  
         }
     }
 }
