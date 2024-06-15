@@ -31,7 +31,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env �
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = "django-insecure-64%-%#pntiwa=u6w%pq6#fcdjnd-u(4c6t25gb0f_&#i6m+!@z" (os.path.join(BASE_DIR, '.SECRET_KEY'))
+
 
 # load_dotenv() 最外面的資料夾 
 
