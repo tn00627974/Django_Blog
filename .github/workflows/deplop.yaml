@@ -21,7 +21,7 @@ jobs:
       - name: Set up virtual environment
         run: |
           python -m venv myenv
-          source myenv/bin/activate  # 在 Linux/macOS 上
+          source myenv/bin/activate  
 #          myenv\Scripts\activate     # 在 Windows 上
         
 
@@ -29,6 +29,12 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r firstproject/requirements.txt 
+
+      - name: Check Django project
+        run: |
+            source myenv/bin/activate
+            python firstproject/manage.py check
+
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
