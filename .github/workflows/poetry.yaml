@@ -25,6 +25,12 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
+      - name: Debug Poetry environment
+        run: |
+          which poetry
+          poetry --version
+          poetry show
+
       - name: Collect static files
         run: poetry run python manage.py collectstatic --noinput
 
