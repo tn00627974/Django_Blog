@@ -88,7 +88,7 @@ jobs:
 
       - name: Collect static files
         run: |
-          python firstproject/manage.py collectstatic --noinput
+          python manage.py collectstatic --noinput
         working-directory: firstproject
 
       - name: Deploy to Azure Web App
