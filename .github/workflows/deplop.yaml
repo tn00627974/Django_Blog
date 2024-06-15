@@ -18,8 +18,17 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Set up virtual environment
+        run: |
+          python -m venv myenv
+          source myenv/bin/activate  # 在 Linux/macOS 上
+#          myenv\Scripts\activate     # 在 Windows 上
+        
+
       - name: Install dependencies
-        run: pip install -r firstproject/requirements.txt
+        run: |
+          pip install --upgrade pip
+          pip install -r firstproject/requirements.txt
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -71,7 +80,9 @@ jobs:
           WEBSITE_RUN_FROM_PACKAGE=1
 
       - name: Collect static files
-        run: python manage.py collectstatic --noinput
+        run: |
+          source myenv/bin/activate  # 在 Linux/macOS 上
+          python manage.py collectstatic --noinput
         working-directory: firstproject
 
       - name: Deploy to Azure Web App
