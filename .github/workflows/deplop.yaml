@@ -36,6 +36,11 @@ jobs:
             source myenv/bin/activate
             python firstproject/manage.py check
 
+      - name: Collect static files
+        run: |
+          python manage.py collectstatic --noinput
+        working-directory: firstproject
+
       - name: Set PYTHONPATH
         run: export PYTHONPATH=$(pwd)
 
@@ -89,10 +94,6 @@ jobs:
           SECRET_KEY=${{ secrets.SECRET_KEY }} \
           WEBSITE_RUN_FROM_PACKAGE=1
 
-      - name: Collect static files
-        run: |
-          python manage.py collectstatic --noinput
-        working-directory: firstproject
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
