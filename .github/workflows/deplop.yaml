@@ -53,6 +53,11 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
+          # creds 是 Azure 登入的密碼，需在 Github 的 Secrets 設定
+          # 怎麼設定 Secrets 請參考 https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E92FF502FD2F4E9580C1F664FA41F3D6 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CBD94531A7504A8BBDF61959546303C8 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_696086DF1A5D40A6BB8587671314F5FE }}
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Set environment variables on Azure Web App
