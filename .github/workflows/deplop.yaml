@@ -82,7 +82,7 @@ jobs:
       - name: Collect static files
         run: |
           cd firstproject
-          python manage.py collectstatic --noinput
+          python3 manage.py collectstatic --noinput
         working-directory: ${{ github.workspace }}
 
       - name: Deploy to Azure Web App
