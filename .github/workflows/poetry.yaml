@@ -38,7 +38,7 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
-          cd firstproject
+          # cd firstproject
           zip release.zip ./* -r
 
       - name: Upload artifact for deployment jobs
@@ -88,4 +88,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'Azure-Django-Web'
+          slot-name: 'Production'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}

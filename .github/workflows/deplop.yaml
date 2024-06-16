@@ -30,7 +30,7 @@ jobs:
         run: |
           cd firstproject
           pip install --upgrade pip
-          pip install -r firstproject/requirements.txt 
+          pip install requirements.txt 
 
       - name: Check Django project
         run: |
