@@ -46,7 +46,7 @@ jobs:
         with:
           name: python-app
           path: |
-            firstproject/release.zip
+            release.zip
             !venv/
   deploy:
     runs-on: ubuntu-latest
