@@ -24,6 +24,7 @@ from dotenv import load_dotenv # 導入 dotenv 套件
 # 獲取專案的根目錄
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 # 獲取 .env 檔案的路徑
 load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env 檔案
 SECRET_KEY = os.getenv('SECRET_KEY') # 從 .env 檔案中獲取 SECRET_KEY 值
