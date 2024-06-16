@@ -43,11 +43,12 @@ SECRET_KEY = os.getenv('SECRET_KEY') # 從 .env 檔案中獲取 SECRET_KEY 值
 # print(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
+# DEBUG = True
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['azure-django-web.azurewebsites.net']
 
+DEBUG = False
+ALLOWED_HOSTS = ['azure-django-web.azurewebsites.net']
 # ALLOWED_HOSTS = ['127.0.0.1', 'azure-django-web.azurewebsites.net']
 
 
@@ -79,7 +80,7 @@ ROOT_URLCONF = "firstproject.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR / "templates")], # 加上 templates 目錄
+        "DIRS": [os.path.join(BASE_DIR ,"templates")], # 加上 templates 目錄
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -103,7 +104,7 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
-# 本地端 測試資料庫設定
+#本地端 測試資料庫設定
 # DATABASES = {
 #     "default": {
 #         # "ENGINE": "django.db.backends.sqlite3",
@@ -128,7 +129,7 @@ DATABASES = {
         'HOST': os.getenv('DB_HOST'), # 資料庫主機名稱
         'PORT': '3306',
         'OPTIONS': {
-            'ssl': {'ca': os.path.join(BASE_DIR, 'static', 'ssl', 'DigiCertGlobalRootCA.crt.pem')}  # 設定 SSL 連線  
+             'ssl': {'ca': os.path.join(BASE_DIR, 'static', 'ssl', 'DigiCertGlobalRootCA.crt.pem')}
         }
     }
 }
@@ -173,7 +174,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [ # 加入 static 路徑 
     os.path.join(BASE_DIR, 'static'), # 
-    # BASE_DIR /'static',
 ]
 STATIC_ROOT = os.path.join(BASE_DIR ,'staticfiles') # 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # 靜態檔案壓縮
