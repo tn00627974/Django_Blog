@@ -4,4 +4,4 @@ markdown==3.6
 django-select2==8.1.2
 python-dotenv==1.0.1
 poetry-plugin-dotenv==2.1.6
-whitenoise=6.6.0 
+whitenoise==6.6.0 
