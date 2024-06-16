@@ -22,6 +22,7 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python -
           echo "$HOME/.local/bin" >> $GITHUB_PATH
+
       - name: Install dependencies
         run: poetry install
 
@@ -38,7 +39,7 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
-          # cd firstproject
+          cd firstproject
           zip release.zip ./* -r
 
       - name: Upload artifact for deployment jobs
@@ -48,12 +49,14 @@ jobs:
           path: |
             firstproject/release.zip
             !venv/
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      # url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: 'https://azure-django-web.azurewebsites.net'
     permissions:
       id-token: write
 
@@ -88,5 +91,4 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'Azure-Django-Web'
-          # slot-name: 'Production'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
