@@ -7,8 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-django = "^5.0.4"
-pymysql = "^1.1.0"
+django = "^5.0"
 markdown = "^3.6"
 django-select2 = "^8.1.2"
 python-dotenv = "^1.0.1"
