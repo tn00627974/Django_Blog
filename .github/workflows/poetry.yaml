@@ -77,9 +77,9 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_696086DF1A5D40A6BB8587671314F5FE }}
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Configure VNet Integration
-        run: |
-          az webapp vnet-integration add --name 'azure-django-web' --resource-group 'deploy' --vnet 'myVNet' --subnet 'default'
+      # - name: Configure VNet Integration
+      #   run: |
+      #     az webapp vnet-integration add --name 'azure-django-web' --resource-group 'deploy' --vnet 'myVNet' --subnet 'default'
 
       - name: Set environment variables on Azure Web App
         run: |
