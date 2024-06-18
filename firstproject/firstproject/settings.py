@@ -16,7 +16,7 @@ from dotenv import load_dotenv # 導入 dotenv 套件
 
 # 導入 get_wsgi_application() 函數
 from django.core.wsgi import get_wsgi_application
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'firstproject.settings')
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'firstproject.settings')
 application = get_wsgi_application()
 
 
