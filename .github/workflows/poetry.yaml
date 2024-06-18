@@ -96,7 +96,7 @@ jobs:
       - name: Start Gunicorn
         run: |
           cd firstproject
-          poetry run gunicorn --bind 0.0.0.0:8000 firstproject.wsgi:application            
+          poetry run gunicorn --bind 0.0.0.0:8000 firstproject.wsgi:application           
 
       # - name: Deploy to Azure Web App
       #   uses: azure/webapps-deploy@v2

@@ -1,0 +1,12 @@
+.fa-stack-2x {
+    color: #000; /* 改變外圍圈顏色 */
+}
+.fa-stack-1x {
+    color: #fff; /* 改變圖標顏色 */
+}
+.fa-stack a:hover .fa-stack-2x {
+    color: #333; /* 改變外圍圈顏色 (hover效果) */
+}
+.fa-stack a:hover .fa-stack-1x {
+    color: #ccc; /* 改變圖標顏色 (hover效果) */
+}
