@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "django-blog"
+version = "0.1.0"
+description = "azure deploy to myblog"
+authors = ["redroom <139155210+tn00627974@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0"
+markdown = "^3.6"
+django-select2 = "^8.1.2"
+python-dotenv = "^1.0.1"
+poetry-plugin-dotenv = "^2.1.6"
+whitenoise = "^6.6.0"
+mysqlclient = "^2.2.4"
+mysql-connector = "^2.2.9"
+mysql-connector-python = "^8.4.0"
+gunicorn = "^22.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

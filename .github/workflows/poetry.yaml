@@ -95,14 +95,6 @@ jobs:
 
       - name: Start Gunicorn
         run: |
-          ls
-          cd ..
-          poetry install
-          which poetry
-          poetry --version
-          poetry show
-          cd firstproject
-          ls
           poetry run gunicorn --bind 0.0.0.0:8000 firstproject.wsgi:application           
 
       # - name: Deploy to Azure Web App
