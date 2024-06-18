@@ -95,7 +95,7 @@ jobs:
 
       - name: Start Gunicorn
         run: |
-          cd firstproject
+          ls
           which poetry
           poetry --version
           poetry show
