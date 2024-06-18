@@ -90,12 +90,13 @@ jobs:
             DB_PASS=${{ secrets.DB_PASS }} \
             DB_HOST=${{ secrets.DB_HOST }} \
             SECRET_KEY='${{ secrets.SECRET_KEY }}' \
-            PORT=80 \
             WEBSITE_RUN_FROM_PACKAGE=1
+
+          # WEBSITES_PORT =8000 \
 
       # - name: Start Gunicorn
       #   run: |
-      #     poetry run gunicorn --bind 0.0.0.0:8000 firstproject.wsgi:application           
+      #     poetry run gunicorn --bind 0.0.0.0 --timeout 600 --chdir firstproject.wsgi:application     
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
