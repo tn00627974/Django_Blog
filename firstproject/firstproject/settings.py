@@ -14,6 +14,13 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv # 導入 dotenv 套件
 
+# 導入 get_wsgi_application() 函數
+from django.core.wsgi import get_wsgi_application
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'firstproject.settings')
+application = get_wsgi_application()
+
+
+
 # from django.core.management.utils import get_random_secret_key
 # print(get_random_secret_key())
 
