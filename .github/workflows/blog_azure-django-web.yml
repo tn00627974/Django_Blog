@@ -30,10 +30,7 @@ jobs:
           pip install -r requirements.txt
           cd firstproject
           python ./manage.py collectstatic --noinput
-
-      - name: Create Procfile
-        run: echo "web: venv/bin/gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application" > Procfile
-    
+      
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
