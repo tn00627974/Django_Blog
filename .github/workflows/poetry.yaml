@@ -100,19 +100,19 @@ jobs:
         with:
           python-version: '3.12'
 
-      # - name: Install Poetry
-      #   run: |
-      #     curl -sSL https://install.python-poetry.org | python3 -
-      #     echo "$HOME/.local/bin" >> $GITHUB_PATH
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-      - name: Ensure Poetry is in PATH
-        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+      # - name: Ensure Poetry is in PATH
+      #   run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-      # - name: Install dependencies
-      #   run: |
-      #     poetry install
-      #     poetry show
-      #     ls
+      - name: Install dependencies
+        run: |
+          poetry install
+          poetry show
+          ls
       
       - name: Debug Poetry environment
         run: |
@@ -124,6 +124,7 @@ jobs:
         run: |
           cd firstproject
           poetry run gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application
+   #       poetry run gunicorn --bind 0.0.0.0:8000 --timeout 600 --chdir /firstproject.wsgi
           
 
  #         poetry run gunicorn --bind 0.0.0.0 --timeout 600 --chdir firstproject.wsgi:application     
