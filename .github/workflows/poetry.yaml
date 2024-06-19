@@ -92,6 +92,7 @@ jobs:
             SECRET_KEY='${{ secrets.SECRET_KEY }}' \
             PORT=8000 \
             WEBSITE_PORT=8000 \
+            WEBSITES_PORT=8000 \
             WEBSITE_RUN_FROM_PACKAGE=1 
 
       # - name: Start Gunicorn
