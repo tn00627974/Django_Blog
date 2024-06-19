@@ -100,7 +100,6 @@ jobs:
       - name: Start Gunicorn
         run: |
           ls
-          poetry install
           cd firstproject
           poetry run gunicorn --chdir firstproject --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application
 
