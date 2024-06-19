@@ -94,6 +94,12 @@ jobs:
             WEBSITES_PORT=8000 \
             WEBSITE_RUN_FROM_PACKAGE=1 
 
+      - name: Set up Python version
+        # uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
       - name: Ensure Poetry is in PATH
         run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
@@ -106,6 +112,7 @@ jobs:
         run: |
           which poetry
           poetry --version
+          python --version
 
       - name: Start Gunicorn
         run: |
