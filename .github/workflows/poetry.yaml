@@ -99,7 +99,7 @@ jobs:
         run: |
           cd firstproject
           pip install gunicorn
-          gunicorn --bind 0.0.0.0 --timeout 600 --chdir firstproject.wsgi:application
+          gunicorn --bind 0.0.0.0 --timeout 600 firstproject.wsgi:application
 
  #         poetry run gunicorn --bind 0.0.0.0 --timeout 600 --chdir firstproject.wsgi:application     
       # - name: Deploy to Azure Web App
