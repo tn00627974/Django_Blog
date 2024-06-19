@@ -96,7 +96,6 @@ jobs:
 
       - name: Start Gunicorn
         run: |
-          cd ..
           ls
           poetry install
           cd firstproject
