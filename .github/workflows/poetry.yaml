@@ -123,7 +123,7 @@ jobs:
       - name: Start Gunicorn
         run: |
           cd firstproject
-          poetry run gunicorn --bind 0.0.0.0:8000 --timeout 600 --chdir /firstproject.wsgi
+          poetry run gunicorn --bind 0.0.0.0:8000 --timeout 600 --chdir /firstproject firstproject.wsgi
    #       # poetry run gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application
           
 
