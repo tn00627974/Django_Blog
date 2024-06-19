@@ -69,6 +69,20 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_BB0A6F597B1F43B296F49CAC88F23A45 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D78E19EE5AC742E18D36B53BDE6C8FFF }}
 
+      - name: Set environment variables on Azure Web App
+        run: |
+            az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'deploy' --settings \
+              DB_NAME=${{ secrets.DB_NAME }} \
+              DB_USER=${{ secrets.DB_USER }} \
+              DB_PASS=${{ secrets.DB_PASS }} \
+              DB_HOST=${{ secrets.DB_HOST }} \
+              SECRET_KEY='${{ secrets.SECRET_KEY }}' \
+              PORT=8000 \
+              WEBSITE_PORT=8000 \
+              WEBSITES_PORT=8000 \
+              WEBSITE_RUN_FROM_PACKAGE=1 
+
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
