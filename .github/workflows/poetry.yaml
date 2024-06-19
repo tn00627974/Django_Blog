@@ -74,7 +74,7 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E92FF502FD2F4E9580C1F664FA41F3D6 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CBD94531A7504A8BBDF61959546303C8 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_696086DF1A5D40A6BB8587671314F5FE }}
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          # creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       # - name: Configure VNet Integration
       #   run: |
@@ -119,11 +119,11 @@ jobs:
           poetry --version
           python --version
 
-      - name: Start Gunicorn
-        run: |
-          cd firstproject
-          ls
-          poetry run gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application
+      # - name: Start Gunicorn
+      #   run: |
+      #     cd firstproject
+      #     ls
+      #     poetry run gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application
           
       # - name: Deploy to Azure Web App
       #   uses: azure/webapps-deploy@v2
