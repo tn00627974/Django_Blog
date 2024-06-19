@@ -100,9 +100,6 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Ensure Poetry is in PATH
-        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
-
       - name: Install Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
@@ -111,7 +108,7 @@ jobs:
       - name: Install dependencies
         run: |
           poetry install
-          peotry show
+          poetry show
           ls
       
       - name: Debug Poetry environment
