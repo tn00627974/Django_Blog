@@ -112,6 +112,7 @@ jobs:
         run: |
           poetry install
           peotry show
+          ls
       
       - name: Debug Poetry environment
         run: |
