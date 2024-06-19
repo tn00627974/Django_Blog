@@ -124,7 +124,7 @@ jobs:
         run: |
           cd firstproject/firstproject
           ls
-          poetry run gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi
+          poetry run gunicorn --bind 0.0.0.0:8000 --timeout 600 wsgi:application
           
 
  #         poetry run gunicorn --bind 0.0.0.0 --timeout 600 --chdir firstproject.wsgi:application     
