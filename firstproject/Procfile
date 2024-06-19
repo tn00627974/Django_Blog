@@ -1,1 +1,1 @@
-web: poetry run gunicorn --bind 0.0.0.0:8000 firstproject.wsgi:application
+web: poetry run gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application
