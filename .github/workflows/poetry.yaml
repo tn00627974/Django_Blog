@@ -97,7 +97,6 @@ jobs:
 
       - name: Start Gunicorn
         run: |
-          cd firstproject
           pip install gunicorn
           ls
           gunicorn --chdir firstproject --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application
