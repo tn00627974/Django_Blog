@@ -49,7 +49,7 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: 'https://azure-django-web.azurewebsites.net/'
+      url: 'azure-django-web.azurewebsites.net'
     permissions:
       id-token: write #This is required for requesting the JWT
 
@@ -66,9 +66,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_EE616ACDDE4C493584FE0C1E029CCA33 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_BB0A6F597B1F43B296F49CAC88F23A45 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D78E19EE5AC742E18D36B53BDE6C8FFF }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E92FF502FD2F4E9580C1F664FA41F3D6 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CBD94531A7504A8BBDF61959546303C8 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_696086DF1A5D40A6BB8587671314F5FE }}
 
       - name: Set environment variables on Azure Web App
         run: |
