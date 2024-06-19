@@ -97,10 +97,20 @@ jobs:
       - name: Ensure Poetry is in PATH
         run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Debug Poetry environment
+        run: |
+          which poetry
+          poetry --version
+
       - name: Start Gunicorn
         run: |
-          ls
-          poetry run gunicorn --chdir firstproject --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application
+          cd firstproject
+          poetry run gunicorn --bind 0.0.0.0:8000 --timeout 600 wsgi:application
 
 
  #         poetry run gunicorn --bind 0.0.0.0 --timeout 600 --chdir firstproject.wsgi:application     
