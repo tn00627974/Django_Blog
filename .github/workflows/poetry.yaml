@@ -94,6 +94,9 @@ jobs:
             WEBSITES_PORT=8000 \
             WEBSITE_RUN_FROM_PACKAGE=1 
 
+      - name: Ensure Poetry is in PATH
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
       - name: Start Gunicorn
         run: |
           ls
