@@ -125,8 +125,6 @@ jobs:
           ls
           poetry run gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application
           
-
- #         poetry run gunicorn --bind 0.0.0.0 --timeout 600 --chdir firstproject.wsgi:application     
       # - name: Deploy to Azure Web App
       #   uses: azure/webapps-deploy@v2
       #   with:
