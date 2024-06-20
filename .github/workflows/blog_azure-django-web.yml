@@ -105,4 +105,4 @@ jobs:
             source venv/bin/activate
             cd firstproject
             pip list
-            gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application
+            nohup gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application &
