@@ -102,6 +102,7 @@ jobs:
       - name: Activate virtual environment and start application
         run: |
             ls
-            cd ${{ github.workspace }}/firstproject
+            cd firstproject
             source venv/bin/activate
+            pip list
             gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application
