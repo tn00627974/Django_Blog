@@ -26,23 +26,28 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-          ls
           pip install -r requirements.txt
+
+      - name: Create Procfile
+        run: echo "web: venv/bin/gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application" > Procfile
+
+      - name: Collect static files
+        run: |
+          source venv/bin/activate
           cd firstproject
-          python ./manage.py collectstatic --noinput
-      
+          python manage.py collectstatic --noinput
+
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: |
+          zip -r release.zip . -x "venv/*" "release.zip"
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
         with:
           name: python-app
-          path: |
-            release.zip
-            !venv/
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -62,7 +67,6 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -72,16 +76,16 @@ jobs:
 
       - name: Set environment variables on Azure Web App
         run: |
-            az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'deploy' --settings \
-              DB_NAME=${{ secrets.DB_NAME }} \
-              DB_USER=${{ secrets.DB_USER }} \
-              DB_PASS=${{ secrets.DB_PASS }} \
-              DB_HOST=${{ secrets.DB_HOST }} \
-              SECRET_KEY='${{ secrets.SECRET_KEY }}' \
-              PORT=8000 \
-              WEBSITES_PORT=8000 \
-              WEBSITE_RUN_FROM_PACKAGE=1 
-
+          az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'deploy' --settings \
+            DB_NAME=${{ secrets.DB_NAME }} \
+            DB_USER=${{ secrets.DB_USER }} \
+            DB_PASS=${{ secrets.DB_PASS }} \
+            DB_HOST=${{ secrets.DB_HOST }} \
+            SECRET_KEY=${{ secrets.SECRET_KEY }} \
+            PORT=8000 \
+            WEBSITES_PORT=8000 \
+            ENABLE_ORYX_BUILD=true \
+            WEBSITE_RUN_FROM_PACKAGE=1
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2

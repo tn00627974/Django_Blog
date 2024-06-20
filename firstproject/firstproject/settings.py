@@ -34,8 +34,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # 獲取 .env 檔案的路徑
 load_dotenv(os.path.join(BASE_DIR, '.env')) # 同firstproject資料夾的.env 檔案
-SECRET_KEY = os.getenv('SECRET_KEY') # 從 .env 檔案中獲取 SECRET_KEY 值
+# SECRET_KEY = os.getenv('SECRET_KEY') # 從 .env 檔案中獲取 SECRET_KEY 值
 
+
+SECRET_KEY='n0^u9ge%949f(=c4n1$8%sme0@oz4mx=t*l3ng@i29gqhz=#_e'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -112,6 +114,13 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR / 'db.sqlite3'),
+#     }
+# }
+
 #本地端 測試資料庫設定
 # DATABASES = {
 #     "default": {
@@ -128,19 +137,34 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 # }
 
 # Azure 遠端資料庫設定
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.getenv('DB_NAME'), 
+#         'USER': os.getenv('DB_USER'), 
+#         'PASSWORD': os.getenv('DB_PASS'),
+#         'HOST': os.getenv('DB_HOST'), # 資料庫主機名稱
+#         'PORT': '3306',
+#         'OPTIONS': {
+#              'ssl': {'ca': os.path.join(BASE_DIR, 'static', 'ssl', 'DigiCertGlobalRootCA.crt.pem')}
+#         }
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'), 
-        'USER': os.getenv('DB_USER'), 
-        'PASSWORD': os.getenv('DB_PASS'),
-        'HOST': os.getenv('DB_HOST'), # 資料庫主機名稱
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.mysql', # 資料庫引擎
+        'NAME': 'azure_django_blog', # 資料庫名稱
+        'USER': 'Azure_Django_Blog', # 資料庫使用者名稱
+        'PASSWORD': 'a0952739894Z', # 資料庫使用者密碼
+        'HOST': 'django-blog-database.mysql.database.azure.com', # 資料庫主機名稱
+        'PORT': '3306', # 資料庫連接埠
         'OPTIONS': {
-             'ssl': {'ca': os.path.join(BASE_DIR, 'static', 'ssl', 'DigiCertGlobalRootCA.crt.pem')}
+            'ssl': {'ca': os.path.join('myblog\static\ssl\DigiCertGlobalRootCA.crt.pem')}  # 設定 SSL 連線  
         }
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
