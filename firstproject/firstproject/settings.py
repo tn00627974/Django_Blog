@@ -151,20 +151,6 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', # 資料庫引擎
-        'NAME': 'azure_django_blog', # 資料庫名稱
-        'USER': 'Azure_Django_Blog', # 資料庫使用者名稱
-        'PASSWORD': 'a0952739894Z', # 資料庫使用者密碼
-        'HOST': 'django-blog-database.mysql.database.azure.com', # 資料庫主機名稱
-        'PORT': '3306', # 資料庫連接埠
-        'OPTIONS': {
-            'ssl': {'ca': os.path.join('myblog\static\ssl\DigiCertGlobalRootCA.crt.pem')}  # 設定 SSL 連線  
-        }
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -208,8 +194,23 @@ STATICFILES_DIRS = [ # 加入 static 路徑
     os.path.join(BASE_DIR, 'static'), # 
 ]
 STATIC_ROOT = os.path.join(BASE_DIR ,'staticfiles') # 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # 靜態檔案壓縮
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # 靜態檔案壓縮 On Django 4.2以下
 
+# https://whitenoise.readthedocs.io/en/stable/django.html
+"""On Django 4.2+:
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+"""
+
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
