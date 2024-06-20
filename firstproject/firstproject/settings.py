@@ -194,7 +194,7 @@ STATICFILES_DIRS = [ # 加入 static 路徑
     os.path.join(BASE_DIR, 'static'), # 
 ]
 STATIC_ROOT = os.path.join(BASE_DIR ,'staticfiles') # 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # 靜態檔案壓縮 On Django 4.2以下
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # 靜態檔案壓縮 On Django 4.2以下
 
 # https://whitenoise.readthedocs.io/en/stable/django.html
 """On Django 4.2+:
@@ -206,11 +206,11 @@ STORAGES = {
 }
 """
 
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+# STORAGES = {
+#     "staticfiles": {
+#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#     },
+# }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
