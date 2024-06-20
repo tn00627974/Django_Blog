@@ -87,16 +87,6 @@ jobs:
               WEBSITES_PORT=8000 \
               ENABLE_ORYX_BUILD=true \
               WEBSITE_RUN_FROM_PACKAGE=1 
-          az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'deploy' --settings \
-            DB_NAME=${{ secrets.DB_NAME }} \
-            DB_USER=${{ secrets.DB_USER }} \
-            DB_PASS=${{ secrets.DB_PASS }} \
-            DB_HOST=${{ secrets.DB_HOST }} \
-            SECRET_KEY=${{ secrets.SECRET_KEY }} \
-            PORT=8000 \
-            WEBSITES_PORT=8000 \
-            ENABLE_ORYX_BUILD=true \
-            WEBSITE_RUN_FROM_PACKAGE=1
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
