@@ -65,6 +65,7 @@ ALLOWED_HOSTS = ['azure-django-web.azurewebsites.net']
 # Application definition
 
 INSTALLED_APPS = [
+    "whitenoise.runserver_nostatic",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
