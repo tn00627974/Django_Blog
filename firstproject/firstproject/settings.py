@@ -154,16 +154,17 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 
 
 # Auzre PostgreSQL 資料庫設定
-CONNECTION = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
-CONNECTION_STR = {pair.split('=')[0]:pair.split('=')[1] for pair in CONNECTION.split(' ')}
+# CONNECTION = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
+# CONNECTION_STR = {pair.split('=')[0]:pair.split('=')[1] for pair in CONNECTION.split(' ')}
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": CONNECTION_STR['dbname'],
-        "HOST": CONNECTION_STR['host'],
-        "USER": CONNECTION_STR['user'],
-        "PASSWORD": CONNECTION_STR['password'],
+        "NAME": os.getenv('POSTGRES_NAME'),
+        "HOST": os.getenv('POSTGRES_HOST'),
+        "USER": os.getenv('POSTGRES_USER'),
+        "PASSWORD": os.getenv('POSTGRES_PASS'),
+        "PORT" : "5432",
         "OPTIONS" : {
              'ssl': {'ca': os.path.join(BASE_DIR, 'static', 'ssl', 'DigiCertGlobalRootCA.crt.pem')}
         }
