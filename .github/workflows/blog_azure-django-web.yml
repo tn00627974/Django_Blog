@@ -29,9 +29,9 @@ jobs:
           source venv/bin/activate
           pip install -r requirements.txt
 
-      - name: Create Procfile
-        run: |
-            echo "web: venv/bin/gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application" > Procfile
+      # - name: Create Procfile
+      #   run: |
+      #       echo "web: venv/bin/gunicorn --bind 0.0.0.0:8000 --timeout 600 firstproject.wsgi:application" > Procfile
 
       - name: Collect static files
         run: |
