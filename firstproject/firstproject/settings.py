@@ -164,7 +164,6 @@ DATABASES = {
         "HOST": os.getenv('POSTGRES_HOST'),
         "USER": os.getenv('POSTGRES_USER'),
         "PASSWORD": os.getenv('POSTGRES_PASS'),
-        "PORT" : "5432",
         "OPTIONS" : 
         {
         'sslmode': 'require',
@@ -172,6 +171,7 @@ DATABASES = {
     }
 }   
 
+print(DATABASES)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
