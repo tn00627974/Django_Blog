@@ -58,7 +58,7 @@ SECRET_KEY='n0^u9ge%949f(=c4n1$8%sme0@oz4mx=t*l3ng@i29gqhz=#_e'
 # ALLOWED_HOSTS = []
 
 DEBUG = False
-ALLOWED_HOSTS = ['azure-django-web.azurewebsites.net']
+ALLOWED_HOSTS = ['azure-django-web-1.azurewebsites.net']
 # ALLOWED_HOSTS = ['127.0.0.1', 'azure-django-web.azurewebsites.net']
 
 
@@ -137,7 +137,7 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 #     }
 # }
 
-# Azure 遠端資料庫設定
+#Azure 遠端資料庫設定
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
@@ -151,6 +151,24 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 #         }
 #     }
 # }
+
+
+# Auzre PostgreSQL 資料庫設定
+CONNECTION = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
+CONNECTION_STR = {pair.split('=')[0]:pair.split('=')[1] for pair in CONNECTION.split(' ')}
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": CONNECTION_STR['dbname'],
+        "HOST": CONNECTION_STR['host'],
+        "USER": CONNECTION_STR['user'],
+        "PASSWORD": CONNECTION_STR['password'],
+        "OPTIONS" : {
+             'ssl': {'ca': os.path.join(BASE_DIR, 'static', 'ssl', 'DigiCertGlobalRootCA.crt.pem')}
+        }
+    }
+}
 
 
 # Password validation
