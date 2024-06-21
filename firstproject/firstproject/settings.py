@@ -165,11 +165,12 @@ DATABASES = {
         "USER": os.getenv('POSTGRES_USER'),
         "PASSWORD": os.getenv('POSTGRES_PASS'),
         "PORT" : "5432",
-        "OPTIONS" : {
-             'ssl': {'ca': os.path.join(BASE_DIR, 'static', 'ssl', 'DigiCertGlobalRootCA.crt.pem')}
+        "OPTIONS" : 
+        {
+        'sslmode': 'require',
         }
     }
-}
+}   
 
 
 # Password validation
