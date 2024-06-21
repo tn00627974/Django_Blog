@@ -101,8 +101,8 @@ jobs:
           app-name: 'Azure-Django-Web'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
 
-      - name: Restart Azure Web App
-        run: az webapp restart --name 'Azure-Django-Web' --resource-group 'deploy'
+      # - name: Restart Azure Web App
+      #   run: az webapp restart --name 'Azure-Django-Web' --resource-group 'deploy'
 
       # - name: Activate virtual environment and start application
       #   run: |
