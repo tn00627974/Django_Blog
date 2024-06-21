@@ -8,3 +8,4 @@ mysqlclient==2.2.4
 mysql-connector==2.2.9
 mysql-connector-python==8.4.0
 gunicorn==22.0.0
+psycopg2==2.9.9
