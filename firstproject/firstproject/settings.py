@@ -138,7 +138,7 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 #         "PORT": "3306",
 #     }
 # }
-
+import json
 #Azure 遠端資料庫設定
 DATABASES = {
     'default': {
@@ -154,6 +154,8 @@ DATABASES = {
         }
     }
 }
+
+print("DATABASES configuration: ", json.dumps(DATABASES, indent=4))
 
 
 # Auzre PostgreSQL 資料庫設定git
