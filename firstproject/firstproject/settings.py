@@ -54,13 +54,14 @@ SECRET_KEY='n0^u9ge%949f(=c4n1$8%sme0@oz4mx=t*l3ng@i29gqhz=#_e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
-ALLOWED_HOSTS = []
+# DEBUG = True
+# ALLOWED_HOSTS = []
 
 # 遠端伺服器設定
-# DEBUG = False
+DEBUG = False
 # ALLOWED_HOSTS = ['azure-django-web-1.azurewebsites.net']
 # ALLOWED_HOSTS = ['azure-django-web.azurewebsites.net']
+ALLOWED_HOSTS = ['azure-django-web-test.azurewebsites.net']
 
 
 # Application definition

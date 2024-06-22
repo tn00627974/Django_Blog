@@ -24,11 +24,16 @@ jobs:
 
       - name: Create and start virtual environment
         run: |
-          python -m venv venv
-          source venv/bin/activate
+            python -m pip install --upgrade pip
+            python -m venv venv
+            source venv/bin/activate
+            pip install -r requirements.txt
       
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Collect static files
+        run: |
+              source venv/bin/activate
+              cd firstproject
+              python manage.py collectstatic --noinput
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -59,7 +64,20 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      
+      - name: Set environment variables on Azure Web App
+        run: |
+            az webapp config appsettings set --name 'Azure-Django-Web-test' --resource-group 'Azure-Django-Web-test_group' --settings \
+              DB_NAME=${{ secrets.AZURE_MYSQL_NAME }} \
+              DB_USER=${{ secrets.AZURE_MYSQL_USER }} \
+              DB_PASS=${{ secrets.AZURE_MYSQL_PASSWORD }} \
+              DB_HOST=${{ secrets.AZURE_MYSQL_HOST }} \
+              SECRET_KEY='${{ secrets.SECRET_KEY }}' \
+              PORT=8000 \
+              WEBSITES_PORT=8000 \
+              ENABLE_ORYX_BUILD=true \
+              WEBSITE_RUN_FROM_PACKAGE=1 
+        
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
@@ -67,3 +85,4 @@ jobs:
           app-name: 'Azure-Django-Web-test'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4691507D80C44AAF9E11348263E61EFF }}
+          # 選basic就好自動幫你產生publish-profile，免費版的話就不用設定publish-profile
