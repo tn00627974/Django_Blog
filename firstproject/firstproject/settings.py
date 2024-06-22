@@ -157,19 +157,30 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 # CONNECTION = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
 # CONNECTION_STR = {pair.split('=')[0]:pair.split('=')[1] for pair in CONNECTION.split(' ')}
 
+import dj_database_url
+
+# 获取连接字符串
+connection_string = os.getenv('AZURE_POSTGRESQL_CONNECTIONSTRING')
+
+# 解析连接字符串并配置数据库
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv('POSTGRES_NAME'),
-        "HOST": os.getenv('POSTGRES_HOST'),
-        "USER": os.getenv('POSTGRES_USER'),
-        "PASSWORD": os.getenv('POSTGRES_PASS'),
-        "OPTIONS" : 
-        {
-        'sslmode': 'require',
-        }
-    }
-}   
+    'default': dj_database_url.parse(connection_string)
+}
+
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": os.getenv('POSTGRES_NAME'),
+#         "HOST": os.getenv('POSTGRES_HOST'),
+#         "USER": os.getenv('POSTGRES_USER'),
+#         "PASSWORD": os.getenv('POSTGRES_PASS'),
+#         "OPTIONS" : 
+#         {
+#         'sslmode': 'require',
+#         }
+#     }
+# }   
 
 
 # DATABASES = {

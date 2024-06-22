@@ -75,16 +75,14 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D69189FBC583477C9E3A7B39D8DA2B19 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_4F55E28A963A4D67A68C1CF269162557 }}
 
-      - name: Set environment variables on Azure Web App
-        run: |
-            az webapp config appsettings set --name 'Azure-Django-Web' --resource-group 'deploy' --settings \
-              DB_NAME=${{ secrets.POSTGRES_NAME }} \
-              DB_USER=${{ secrets.POSTGRES_USER }} \
-              DB_PASS=${{ secrets.POSTGRES_PASS }} \
-              DB_HOST=${{ secrets.POSTGRES_HOST }} \
-              SECRET_KEY='${{ secrets.DJANGO_SECRET_KEY }}' \
-
-              
+      # - name: Set environment variables on Azure Web App
+      #   run: |
+      #       az webapp config appsettings set --name 'Azure-Django-Web-1' --resource-group 'Azure-Django-Web-1_group-bb94' --settings \
+      #       POSTGRES_NAME=${{ secrets.POSTGRES_NAME }} \
+      #       POSTGRES_USER=${{ secrets.POSTGRES_USER }} \
+      #       POSTGRES_PASS=${{ secrets.POSTGRES_PASS }} \
+      #       POSTGRES_HOST=${{ secrets.POSTGRES_HOST }} \
+      #         SECRET_KEY='${{ secrets.DJANGO_SECRET_KEY }}' \
     #          PORT=8000 \
     #          WEBSITES_PORT=8000 \
     #          ENABLE_ORYX_BUILD=true \
