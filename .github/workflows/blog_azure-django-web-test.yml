@@ -64,18 +64,18 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      - name: Set environment variables on Azure Web App
-        run: |
-            az webapp config appsettings set --name 'Azure-Django-Web-test' --resource-group 'Azure-Django-Web-test_group' --settings \
-              DB_NAME=${{ secrets.AZURE_MYSQL_NAME }} \
-              DB_USER=${{ secrets.AZURE_MYSQL_USER }} \
-              DB_PASS=${{ secrets.AZURE_MYSQL_PASSWORD }} \
-              DB_HOST=${{ secrets.AZURE_MYSQL_HOST }} \
-              SECRET_KEY='${{ secrets.SECRET_KEY }}' \
-              PORT=8000 \
-              WEBSITES_PORT=8000 \
-              ENABLE_ORYX_BUILD=true \
-              WEBSITE_RUN_FROM_PACKAGE=1 
+      # - name: Set environment variables on Azure Web App
+      #   run: |
+      #       az webapp config appsettings set --name 'Azure-Django-Web-test' --resource-group 'Azure-Django-Web-test_group' --settings \
+      #         DB_NAME=${{ secrets.AZURE_MYSQL_NAME }} \
+      #         DB_USER=${{ secrets.AZURE_MYSQL_USER }} \
+      #         DB_PASS=${{ secrets.AZURE_MYSQL_PASSWORD }} \
+      #         DB_HOST=${{ secrets.AZURE_MYSQL_HOST }} \
+      #         SECRET_KEY='${{ secrets.SECRET_KEY }}' \
+      #         PORT=8000 \
+      #         WEBSITES_PORT=8000 \
+      #         ENABLE_ORYX_BUILD=true \
+      #         WEBSITE_RUN_FROM_PACKAGE=1 
         
 
       - name: 'Deploy to Azure Web App'
