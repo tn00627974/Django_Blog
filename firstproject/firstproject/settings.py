@@ -54,11 +54,11 @@ SECRET_KEY='n0^u9ge%949f(=c4n1$8%sme0@oz4mx=t*l3ng@i29gqhz=#_e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-# DEBUG = True
-# ALLOWED_HOSTS = []
+DEBUG = True
+ALLOWED_HOSTS = []
 
-DEBUG = False
-ALLOWED_HOSTS = ['azure-django-web-1.azurewebsites.net']
+# DEBUG = False
+# ALLOWED_HOSTS = ['azure-django-web-1.azurewebsites.net']
 # ALLOWED_HOSTS = ['127.0.0.1', 'azure-django-web.azurewebsites.net']
 
 
@@ -138,19 +138,20 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 # }
 
 #Azure 遠端資料庫設定
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': os.getenv('DB_NAME'), 
-#         'USER': os.getenv('DB_USER'), 
-#         'PASSWORD': os.getenv('DB_PASS'),
-#         'HOST': os.getenv('DB_HOST'), # 資料庫主機名稱
-#         'PORT': '3306',
-#         'OPTIONS': {
-#              'ssl': {'ca': os.path.join(BASE_DIR, 'static', 'ssl', 'DigiCertGlobalRootCA.crt.pem')}
-#         }
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME'), 
+        'USER': os.getenv('DB_USER'), 
+        'PASSWORD': os.getenv('DB_PASS'),
+        'HOST': os.getenv('DB_HOST'), # 資料庫主機名稱
+        'PORT': '3306',
+        'OPTIONS': {
+             'ssl': {'ca': os.path.join('myblog\static\ssl\DigiCertGlobalRootCA.crt.pem')}
+             
+        }
+    }
+}
 
 
 # Auzre PostgreSQL 資料庫設定git
@@ -168,34 +169,36 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 # }
 
 
-# # DATABASES = {
-# #     "default": {
-# #         "ENGINE": "django.db.backends.postgresql",
-# #         "NAME": os.getenv('POSTGRES_NAME'),
-# #         "HOST": os.getenv('POSTGRES_HOST'),
-# #         "USER": os.getenv('POSTGRES_USER'),
-# #         "PASSWORD": os.getenv('POSTGRES_PASS'),
-# #         "OPTIONS" : 
-# #         {
-# #         'sslmode': 'require',
-# #         }
-# #     }
-# # }   
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": os.getenv('POSTGRES_NAME'),
+#         "HOST": os.getenv('POSTGRES_HOST'),
+#         "USER": os.getenv('POSTGRES_USER'),
+#         "PASSWORD": os.getenv('POSTGRES_PASS'),
+#         "OPTIONS" : 
+#         {
+#         'sslmode': 'require',
+#         }
+#     }
+# }   
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'azure-django-web-1-postgresql',  # 数据库名称
-        'HOST': 'azure-django-web-1-postgresql.postgres.database.azure.com',  # 主机名
-        'PORT': '5432',  # 端口号
-        'USER': 'aptiugpfpm',  # 用户名
-        'PASSWORD': 'rbVWqozW$tyzcB$R',  # 密码
-        'OPTIONS': {
-            'sslmode': 'require',  # 强制使用 SSL 连接
-        }
-    }
-}
+# DATABASES = {
+    # 'default': {
+        # "ENGINE": "django.db.backends.postgresql",
+        # "NAME": "azure-django-web-1-postgresql", 
+        # 'HOST': 'azure-django-web-1-postgresql.postgres.database.azure.com',  # 主机名
+        # 'PORT': '5432',  # 端口号
+        # 'USER': 'aptiugpfpm',  # 用户名
+        # 'PASSWORD': 'rbVWqozW$tyzcB$R',  # 密码
+#         'OPTIONS': {
+#             'sslmode': 'require',  # 强制使用 SSL 连接
+#             'client_encoding': 'utf-8',  # 或 'utf-8'
+            
+        # }
+    # }
+# }
 
 
 # Password validation

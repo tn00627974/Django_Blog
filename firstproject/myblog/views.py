@@ -54,7 +54,7 @@ def portfolio(request):
 #     return render(request, 'about.html')
 
 def about_me(request):
-    with open('static/about_me.md', 'r',encoding='utf-8') as f:
+    with open('myblog/static/about_me.md', 'r',encoding='utf-8') as f:
         content = f.read()
         html_content = markdown.markdown(content)
     return render(request, 'about_me.html', {'html_content': html_content})
