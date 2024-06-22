@@ -183,19 +183,20 @@ DATABASES = {
 # }   
 
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": CONNECTION_STR['dbname'],
-#         "HOST": CONNECTION_STR['host'],
-#         "USER": CONNECTION_STR['user'],
-#         "PASSWORD": CONNECTION_STR['password'],
-#         "OPTIONS" : 
-#         {
-#         'sslmode': 'require',
-#         }
-#     }
-# }   
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'azure-django-web-1-postgresql',  # 数据库名称
+        'HOST': 'azure-django-web-1-postgresql.postgres.database.azure.com',  # 主机名
+        'PORT': '5432',  # 端口号
+        'USER': 'aptiugpfpm',  # 用户名
+        'PASSWORD': 'rbVWqozW$tyzcB$R',  # 密码
+        'OPTIONS': {
+            'sslmode': 'require',  # 强制使用 SSL 连接
+        }
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
