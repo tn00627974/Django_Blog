@@ -93,5 +93,4 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'Azure-Django-Web-1'
-          slot-name: 'Production'
           
