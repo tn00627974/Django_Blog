@@ -1,6 +1,15 @@
 ![image](https://github.com/tn00627974/Django_Blog/assets/139155210/e23046f2-09e0-4dce-b184-ad3d8989f397)
 
 
+# Django Blog 目標開發 
+
+- [x] 先測試部落格功能 
+- [ ] 未來首頁功能是? `目前跟Blog為同一頁`
+- [x] 介面優化及設計
+- [x] 作品集
+- [x] 關於我
+- [ ] 佈署Azure or PythonAnywhere
+
 # Django Blog 功能開發
 
 - [x] Django連結template 用HTML ,CSS ,Bootstrap 美化介面 
