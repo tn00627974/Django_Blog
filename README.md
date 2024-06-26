@@ -1,6 +1,8 @@
-# 這是一個使用Django架設部落格的網站，提供了HTML、CSS、JS的頁面呈現，
-# 可以自動新增與更新網頁文章的數量和標籤內容，
-# 提供作品集及自我介紹的頁面。
+# 這是一個使用Django架設部落格的Blog網站
+
+- 提供了HTML、CSS、JS的頁面呈現，
+- 可以自動新增與更新網頁文章的數量和標籤內容，
+- 提供作品集及自我介紹的頁面。
 
 ![image](https://github.com/tn00627974/Django_Blog/assets/139155210/e64f4ea8-ad43-4b56-a9d0-52913475593b)
 ![image](https://github.com/tn00627974/Django_Blog/assets/139155210/3947b116-7590-4777-80c3-1c0e4760f51b)
